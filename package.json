@@ -1,0 +1,37 @@
+{
+    "name": "@individ/individ.rocks",
+    "private": true,
+    "description": "Company website made using Gatsby & Sanity.",
+    "author": "railek <jean@railek.com>",
+    "version": "1.0.0",
+    "license": "AGPL-3.0",
+    "bugs": {
+        "url": "https://github.com/individ/individ.rocks/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/individ/individ.rocks.git"
+    },
+    "homepage": "https://github.com/individ/individ.rocks/#README",
+    "workspaces": [
+        "web",
+        "studio"
+    ],
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "scripts": {
+        "install-packages": "yarn install",
+        "develop": "yarn workspace web develop",
+        "build": "yarn workspace web build",
+        "clean": "yarn workspace web clean",
+        "deploy-sanity": "yarn workspace studio deploy"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^9.1.1",
+        "@commitlint/config-conventional": "^9.1.1",
+        "husky": "^4.2.5"
+    }
+}
