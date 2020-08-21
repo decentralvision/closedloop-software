@@ -3,8 +3,8 @@ import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import MapEdgesToNodes from '../lib/map-edges-to-nodes';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import { Layout } from '../containers';
+import { SEO } from '../components';
 
 export const query = graphql`
     query BlogPageQuery {

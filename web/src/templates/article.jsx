@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import PortableText from '@sanity/block-content-to-react';
 import Img from 'gatsby-image';
-import Layout from '../components/layout';
+import { Layout } from '../containers';
 import SEO from '../components/seo';
 import serializers from '../serializers';
 
