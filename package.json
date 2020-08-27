@@ -26,6 +26,7 @@
         "install-packages": "yarn install",
         "develop": "yarn workspace web develop",
         "build": "yarn workspace web build",
+        "serve": "yarn workspace web serve",
         "clean": "yarn workspace web clean",
         "deploy-sanity": "yarn workspace studio deploy"
     },
