@@ -1,3 +1,6 @@
+/*! tailwindcss v2.0.4 | MIT License | https://tailwindcss.com */
+/*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
+
 *,
 ::before,
 ::after {
@@ -185,6 +188,11 @@ fieldset {
 ol,
 ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
     margin: 0;
     padding: 0;
 }

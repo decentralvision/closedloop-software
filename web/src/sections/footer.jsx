@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Divider } from '../components';
-import { Wrapper } from '../containers';
+import { Divider, Wrapper } from '../components';
 
 const StyledFooter = styled.footer`
     background-color: var(--gray-700);

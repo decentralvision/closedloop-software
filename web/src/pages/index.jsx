@@ -1,110 +1,99 @@
 import React from 'react';
-import { Layout } from '../containers';
-import { SEO } from '../components';
+import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
+import { SEO, Intro } from '../components';
 
-const IndexPage = () => {
-    return (
-        <Layout>
-            <SEO title="Home" />
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Nibh tellus molestie nunc non blandit.
-                Magnis dis parturient montes nascetur ridiculus mus. Orci nulla pellentesque
-                dignissim enim sit amet venenatis. Lacus suspendisse faucibus interdum posuere
-                lorem. Leo integer malesuada nunc vel risus commodo. Viverra aliquet eget sit amet.
-                Vestibulum lorem sed risus ultricies tristique nulla aliquet. Lacus luctus accumsan
-                tortor posuere ac ut consequat semper. Vitae tortor condimentum lacinia quis vel
-                eros donec ac odio. Hendrerit dolor magna eget est lorem ipsum dolor sit. Aliquet
-                enim tortor at auctor urna. Sed sed risus pretium quam vulputate dignissim. Pharetra
-                pharetra massa massa ultricies mi quis hendrerit dolor magna. Vulputate sapien nec
-                sagittis aliquam malesuada. Sit amet aliquam id diam maecenas ultricies mi eget
-                mauris. Varius quam quisque id diam vel quam elementum pulvinar etiam. Pellentesque
-                eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Morbi tristique
-                senectus et netus. Interdum posuere lorem ipsum dolor sit. Tristique sollicitudin
-                nibh sit amet. Nam libero justo laoreet sit amet. Orci a scelerisque purus semper.
-                Mi in nulla posuere sollicitudin aliquam ultrices. Cursus euismod quis viverra nibh
-                cras. Tellus cras adipiscing enim eu turpis. In iaculis nunc sed augue lacus viverra
-                vitae congue. Sed turpis tincidunt id aliquet risus. Tincidunt augue interdum velit
-                euismod in. Aliquet bibendum enim facilisis gravida neque convallis a cras. Semper
-                feugiat nibh sed pulvinar. Ullamcorper velit sed ullamcorper morbi tincidunt.
-                Adipiscing elit pellentesque habitant morbi. Mauris sit amet massa vitae tortor. Ut
-                morbi tincidunt augue interdum velit euismod in pellentesque massa. Neque vitae
-                tempus quam pellentesque nec nam aliquam. Nisi est sit amet facilisis magna. Ipsum
-                dolor sit amet consectetur adipiscing elit ut. Urna et pharetra pharetra massa.
-                Fringilla est ullamcorper eget nulla facilisi. Varius morbi enim nunc faucibus a
-                pellentesque sit amet. Facilisis magna etiam tempor orci eu. Vel eros donec ac odio.
-                Purus non enim praesent elementum facilisis leo vel fringilla est. Mi sit amet
-                mauris commodo quis imperdiet massa. Fermentum odio eu feugiat pretium nibh ipsum
-                consequat nisl. Libero id faucibus nisl tincidunt eget nullam non. Nisl nisi
-                scelerisque eu ultrices vitae auctor eu augue. Eu volutpat odio facilisis mauris sit
-                amet massa. Tempus quam pellentesque nec nam aliquam sem et. Tempus urna et pharetra
-                pharetra massa massa ultricies mi. Nulla porttitor massa id neque aliquam. Tellus id
-                interdum velit laoreet id donec ultrices tincidunt arcu. Accumsan sit amet nulla
-                facilisi. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi
-                tristique. Lacus laoreet non curabitur gravida arcu ac tortor. Pulvinar mattis nunc
-                sed blandit libero volutpat sed cras. Ornare suspendisse sed nisi lacus sed viverra
-                tellus in. Pretium viverra suspendisse potenti nullam ac tortor vitae. Sed
-                ullamcorper morbi tincidunt ornare massa eget. Malesuada proin libero nunc
-                consequat. Quis varius quam quisque id diam. Proin sagittis nisl rhoncus mattis.
-                Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin. Amet nisl purus in
-                mollis nunc sed id semper risus. Volutpat lacus laoreet non curabitur. At tellus at
-                urna condimentum mattis. Velit scelerisque in dictum non consectetur a erat nam at.
-                Nulla pharetra diam sit amet nisl suscipit adipiscing bibendum. Sed felis eget velit
-                aliquet sagittis id consectetur purus. Egestas diam in arcu cursus euismod quis
-                viverra nibh cras. Nulla facilisi etiam dignissim diam quis enim lobortis. Ut etiam
-                sit amet nisl. Laoreet sit amet cursus sit amet dictum. Id semper risus in hendrerit
-                gravida rutrum quisque non tellus. Est velit egestas dui id ornare arcu. Ullamcorper
-                malesuada proin libero nunc consequat. Volutpat ac tincidunt vitae semper. Congue
-                quisque egestas diam in arcu cursus euismod quis viverra. Viverra justo nec ultrices
-                dui sapien eget. Pellentesque dignissim enim sit amet venenatis. Tellus mauris a
-                diam maecenas. Volutpat est velit egestas dui id ornare arcu odio. In aliquam sem
-                fringilla ut morbi. Ultricies lacus sed turpis tincidunt id aliquet. Nibh mauris
-                cursus mattis molestie a iaculis at. Sit amet porttitor eget dolor morbi non. Vitae
-                et leo duis ut diam quam nulla porttitor massa. Purus faucibus ornare suspendisse
-                sed nisi lacus sed viverra tellus. Adipiscing tristique risus nec feugiat in
-                fermentum posuere urna. Gravida neque convallis a cras semper. Ultrices eros in
-                cursus turpis massa. Malesuada bibendum arcu vitae elementum curabitur vitae nunc
-                sed. Integer vitae justo eget magna fermentum iaculis eu non. Vitae semper quis
-                lectus nulla at volutpat diam. Tincidunt nunc pulvinar sapien et. Amet cursus sit
-                amet dictum sit. Arcu ac tortor dignissim convallis aenean. Lacinia at quis risus
-                sed vulputate. Non pulvinar neque laoreet suspendisse interdum consectetur. Egestas
-                congue quisque egestas diam in arcu cursus euismod. Massa id neque aliquam
-                vestibulum morbi blandit cursus risus at. Turpis egestas sed tempus urna et pharetra
-                pharetra massa. Congue eu consequat ac felis donec et odio pellentesque diam.
-                Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu. Volutpat commodo sed
-                egestas egestas fringilla phasellus faucibus. Sit amet est placerat in egestas erat
-                imperdiet. In aliquam sem fringilla ut. Sed felis eget velit aliquet sagittis id
-                consectetur. Iaculis at erat pellentesque adipiscing commodo elit at. Urna nec
-                tincidunt praesent semper feugiat nibh sed pulvinar. Nibh tellus molestie nunc non
-                blandit massa enim nec. Sollicitudin nibh sit amet commodo nulla. At tempor commodo
-                ullamcorper a lacus vestibulum sed. Vel eros donec ac odio tempor orci dapibus
-                ultrices. In eu mi bibendum neque egestas. Fringilla ut morbi tincidunt augue.
-                Feugiat vivamus at augue eget arcu dictum varius duis. Egestas congue quisque
-                egestas diam in arcu. In tellus integer feugiat scelerisque varius morbi enim.
-                Viverra nam libero justo laoreet sit amet cursus sit. Curabitur gravida arcu ac
-                tortor. Et netus et malesuada fames ac turpis. Tempor commodo ullamcorper a lacus
-                vestibulum sed arcu. Tellus mauris a diam maecenas sed enim ut. Ridiculus mus mauris
-                vitae ultricies leo. Sed id semper risus in hendrerit gravida. Amet consectetur
-                adipiscing elit pellentesque habitant morbi tristique. Mi eget mauris pharetra et
-                ultrices neque ornare aenean. Arcu felis bibendum ut tristique. Elit scelerisque
-                mauris pellentesque pulvinar pellentesque. Id semper risus in hendrerit. Vel
-                fringilla est ullamcorper eget nulla facilisi etiam. Accumsan lacus vel facilisis
-                volutpat est velit egestas. Molestie ac feugiat sed lectus. Molestie ac feugiat sed
-                lectus vestibulum mattis ullamcorper velit. Bibendum enim facilisis gravida neque
-                convallis. Non arcu risus quis varius quam quisque. Ac ut consequat semper viverra
-                nam libero. Facilisis sed odio morbi quis commodo odio aenean sed. Quam viverra orci
-                sagittis eu volutpat odio facilisis mauris sit. Eros donec ac odio tempor. Sed risus
-                ultricies tristique nulla aliquet enim tortor at. Diam maecenas ultricies mi eget
-                mauris pharetra et ultrices neque. Amet purus gravida quis blandit turpis. Vulputate
-                eu scelerisque felis imperdiet proin fermentum. Sem viverra aliquet eget sit amet
-                tellus. Bibendum est ultricies integer quis auctor. Ut venenatis tellus in metus
-                vulputate eu scelerisque felis. Volutpat ac tincidunt vitae semper quis lectus.
-                Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Eget
-                velit aliquet sagittis id. Quisque sagittis purus sit amet. Convallis a cras semper
-                auctor neque vitae. Dolor purus non enim praesent elementum facilisis.
-            </p>
-        </Layout>
-    );
+const content = (isFirstMount) => ({
+    animate: {
+        transition: { staggerChildren: 0.1, delayChildren: isFirstMount ? 2 : 0 },
+    },
+});
+
+const container = {
+    initial: { y: -20, opacity: 0 },
+    animate: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.7,
+            ease: [0.6, -0.05, 0.01, 0.99],
+        },
+    },
 };
 
-export default IndexPage;
+export default function IndexPage({ location }) {
+    const isFirstMount = !location.action;
+
+    return (
+        <>
+            <SEO title="Home" />
+            <motion.section exit={{ opacity: 0 }}>
+                {isFirstMount && <Intro />}
+                <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
+                    <motion.div variants={container}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla
+                        facilisi nullam vehicula ipsum a arcu cursus. At imperdiet dui accumsan sit.
+                        Nisl condimentum id venenatis a condimentum vitae sapien pellentesque
+                        habitant. In fermentum et sollicitudin ac. Egestas egestas fringilla
+                        phasellus faucibus. Diam maecenas sed enim ut sem viverra aliquet eget. At
+                        augue eget arcu dictum varius. Tristique et egestas quis ipsum suspendisse.
+                        Ut lectus arcu bibendum at varius vel. Amet mauris commodo quis imperdiet.
+                        Arcu dui vivamus arcu felis bibendum. Malesuada fames ac turpis egestas sed
+                        tempus. Orci dapibus ultrices in iaculis nunc sed augue. Consequat ac felis
+                        donec et. Faucibus turpis in eu mi bibendum. Eget aliquet nibh praesent
+                        tristique. Est lorem ipsum dolor sit amet consectetur. Erat pellentesque
+                        adipiscing commodo elit at imperdiet dui accumsan. Tellus mauris a diam
+                        maecenas sed enim ut. Platea dictumst vestibulum rhoncus est pellentesque.
+                        Malesuada fames ac turpis egestas sed tempus urna. Mauris pharetra et
+                        ultrices neque. Penatibus et magnis dis parturient montes nascetur.
+                        Consectetur purus ut faucibus pulvinar elementum integer enim neque.
+                        Habitant morbi tristique senectus et netus et. Elementum curabitur vitae
+                        nunc sed velit. Urna condimentum mattis pellentesque id nibh. Gravida neque
+                        convallis a cras semper auctor neque vitae tempus. Magnis dis parturient
+                        montes nascetur ridiculus. Rhoncus mattis rhoncus urna neque viverra justo.
+                        Orci a scelerisque purus semper eget duis at. Gravida quis blandit turpis
+                        cursus in hac habitasse. Nulla porttitor massa id neque aliquam vestibulum
+                        morbi blandit. Pharetra diam sit amet nisl suscipit adipiscing bibendum est
+                        ultricies. Tempus imperdiet nulla malesuada pellentesque elit eget gravida
+                        cum. Nunc aliquet bibendum enim facilisis gravida neque convallis. Nec
+                        sagittis aliquam malesuada bibendum arcu vitae elementum. Mus mauris vitae
+                        ultricies leo integer malesuada nunc vel risus. Varius quam quisque id diam.
+                        Sed arcu non odio euismod lacinia at quis risus sed. Egestas diam in arcu
+                        cursus euismod quis viverra. Amet est placerat in egestas erat imperdiet
+                        sed. Justo donec enim diam vulputate. Dui vivamus arcu felis bibendum ut.
+                        Sollicitudin ac orci phasellus egestas. Ac tortor dignissim convallis aenean
+                        et tortor at. At urna condimentum mattis pellentesque id nibh tortor id
+                        aliquet. Libero id faucibus nisl tincidunt. Feugiat scelerisque varius morbi
+                        enim nunc faucibus a pellentesque. Tristique risus nec feugiat in fermentum
+                        posuere urna. Varius quam quisque id diam vel quam elementum pulvinar etiam.
+                        At tempor commodo ullamcorper a lacus vestibulum. Orci ac auctor augue
+                        mauris. Egestas purus viverra accumsan in nisl nisi scelerisque eu. Pretium
+                        aenean pharetra magna ac placerat vestibulum lectus mauris. Hendrerit dolor
+                        magna eget est lorem ipsum. Eleifend mi in nulla posuere sollicitudin. Odio
+                        ut sem nulla pharetra. Adipiscing elit pellentesque habitant morbi tristique
+                        senectus. Enim ut tellus elementum sagittis vitae et leo duis. Facilisi cras
+                        fermentum odio eu feugiat pretium nibh ipsum consequat. Id neque aliquam
+                        vestibulum morbi blandit cursus risus at. Leo integer malesuada nunc vel
+                        risus. Arcu risus quis varius quam quisque id diam. Leo vel orci porta non
+                        pulvinar. Blandit libero volutpat sed cras ornare arcu dui. Tempor orci eu
+                        lobortis elementum. Auctor eu augue ut lectus arcu bibendum at varius vel.
+                        Tristique magna sit amet purus gravida quis. Egestas diam in arcu cursus
+                        euismod. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit
+                        ullamcorper. Nibh venenatis cras sed felis. Ut morbi tincidunt augue
+                        interdum velit. Egestas tellus rutrum tellus pellentesque eu tincidunt
+                        tortor aliquam. In eu mi bibendum neque egestas congue quisque egestas.
+                        Donec enim diam vulputate ut pharetra. Libero id faucibus nisl tincidunt
+                        eget nullam non nisi est. Sed risus pretium quam vulputate dignissim. Neque
+                        gravida in fermentum et sollicitudin ac orci phasellus. Proin libero nunc
+                        consequat interdum varius sit amet mattis vulputate.
+                    </motion.div>
+                </motion.div>
+            </motion.section>
+        </>
+    );
+}
+
+IndexPage.propTypes = {
+    location: PropTypes.object.isRequired,
+};

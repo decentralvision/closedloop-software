@@ -2,9 +2,27 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
+import { motion } from 'framer-motion';
 import MapEdgesToNodes from '../lib/map-edges-to-nodes';
-import { Layout } from '../containers';
-import { SEO } from '../components';
+import { SEO, Intro } from '../components';
+
+const content = (isFirstMount) => ({
+    animate: {
+        transition: { staggerChildren: 0.1, delayChildren: isFirstMount ? 2 : 0 },
+    },
+});
+
+const container = {
+    initial: { y: -20, opacity: 0 },
+    animate: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.7,
+            ease: [0.6, -0.05, 0.01, 0.99],
+        },
+    },
+};
 
 export const query = graphql`
     query BlogPageQuery {
@@ -32,7 +50,7 @@ export const query = graphql`
 
 const ArticleCard = ({ slug, title, excerpt, image }) => {
     return (
-        <Link to={`/${slug.current}`}>
+        <Link to={`/${slug.current}/`}>
             <article>
                 <header>
                     <Img fluid={image.asset.fluid} alt={title} />
@@ -45,24 +63,31 @@ const ArticleCard = ({ slug, title, excerpt, image }) => {
 };
 
 const ArticlePage = (props) => {
-    const { data } = props;
+    const { data, location } = props;
+    const isFirstMount = !location.action;
     const articles = data && data.article && MapEdgesToNodes(data.article);
 
     return (
-        <Layout>
+        <>
             <SEO title="Articles" />
-            <section>
-                {articles.map((item) => (
-                    <ArticleCard
-                        key={item.id}
-                        slug={item.slug}
-                        title={item.title}
-                        excerpt={item.excerpt}
-                        image={item.image}
-                    />
-                ))}
-            </section>
-        </Layout>
+
+            <motion.section exit={{ opacity: 0 }}>
+                {isFirstMount && <Intro />}
+                <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
+                    <motion.div variants={container}>
+                        {articles.map((item) => (
+                            <ArticleCard
+                                key={item.id}
+                                slug={item.slug}
+                                title={item.title}
+                                excerpt={item.excerpt}
+                                image={item.image}
+                            />
+                        ))}
+                    </motion.div>
+                </motion.div>
+            </motion.section>
+        </>
     );
 };
 
@@ -70,6 +95,7 @@ export default ArticlePage;
 
 ArticlePage.propTypes = {
     data: PropTypes.node.isRequired,
+    location: PropTypes.object.isRequired,
 };
 
 ArticleCard.propTypes = {

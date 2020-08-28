@@ -10,6 +10,9 @@ module.exports = {
     siteMetadata: {
         siteUrl: 'https://www.individ.io',
     },
+    flags: {
+        DEV_SSR: false,
+    },
     plugins: [
         {
             resolve: 'gatsby-source-sanity',
