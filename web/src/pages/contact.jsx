@@ -48,7 +48,7 @@ export default function ContactPage({ location }) {
         <>
             <SEO title="Contact" />
 
-            <motion.section exit={{ opacity: 0 }}>
+            <motion.section key={location.key} exit={{ opacity: 0 }}>
                 {isFirstMount && <Intro />}
 
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">

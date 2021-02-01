@@ -59,7 +59,7 @@ export default function ArticleTemplate({ data, pageContext, location }) {
         <>
             <SEO title={article.title} description={article.excerpt} image={article.image.asset} />
 
-            <motion.section exit={{ opacity: 0 }}>
+            <motion.section key={location.key} exit={{ opacity: 0 }}>
                 {isFirstMount && <Intro />}
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
                     <motion.div variants={container}>

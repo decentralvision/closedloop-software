@@ -8,10 +8,12 @@ const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
     siteMetadata: {
-        siteUrl: 'https://www.individ.io',
+        siteUrl: 'https://www.individ.rocks',
     },
     flags: {
         DEV_SSR: false,
+        FAST_REFRESH: true,
+        FAST_DEV: true,
     },
     plugins: [
         {

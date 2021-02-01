@@ -9,11 +9,13 @@ function Layout({ children }) {
         <>
             <GlobalStyles />
 
+            <Nav />
+
             <AnimatePresence exitBeforeEnter>
-                <Nav />
                 <main>{children}</main>
-                <Footer />
             </AnimatePresence>
+
+            <Footer />
         </>
     );
 }

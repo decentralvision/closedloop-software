@@ -31,8 +31,8 @@
         "deploy-sanity": "yarn workspace studio deploy"
     },
     "devDependencies": {
-        "@commitlint/cli": "^9.1.1",
-        "@commitlint/config-conventional": "^9.1.1",
-        "husky": "^4.2.5"
+        "@commitlint/cli": "^12.1.0",
+        "@commitlint/config-conventional": "^12.1.0",
+        "husky": "^6.0.0"
     }
 }
