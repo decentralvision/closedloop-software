@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Divider, Wrapper } from '../components';
+import { Divider } from '../components';
 
 const StyledFooter = styled.footer`
     background-color: var(--gray-700);
@@ -20,11 +20,9 @@ export default function Footer() {
     return (
         <StyledFooter>
             <Divider />
-            <Wrapper>
-                <StyledNotice>
-                    <p>© Copyright Individ {new Date().getFullYear()}. All rights reserved.</p>
-                </StyledNotice>
-            </Wrapper>
+            <StyledNotice>
+                <p>© Copyright Individ {new Date().getFullYear()}. All rights reserved.</p>
+            </StyledNotice>
         </StyledFooter>
     );
 }

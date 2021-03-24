@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 const StyledTransition = styled.div`
     position: fixed;
@@ -95,13 +94,7 @@ const text = {
 export default function Intro() {
     return (
         <StyledTransition>
-            <motion.div
-                initial="initial"
-                animate="animate"
-                variants={box}
-                onAnimationStart={() => disableBodyScroll(document.body)}
-                onAnimationComplete={() => enableBodyScroll(document.body)}
-            >
+            <motion.div initial="initial" animate="animate" variants={box}>
                 <motion.svg variants={container}>
                     <pattern id="pattern" patternUnits="userSpaceOnUse" width={512} height={512}>
                         <rect />

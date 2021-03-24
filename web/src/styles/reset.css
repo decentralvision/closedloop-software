@@ -203,6 +203,7 @@ hr {
 
 img {
     border-style: solid;
+    margin: 0;
 }
 
 textarea {

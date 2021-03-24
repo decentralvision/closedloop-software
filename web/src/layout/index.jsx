@@ -1,21 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import GlobalStyles from '../styles/global';
-import { Footer, Nav } from '../sections';
+import { Nav, Footer, Aside } from '../sections';
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+
+    & > div {
+        @media (min-width: 768px) {
+            margin-left: var(--space-96);
+        }
+    }
+`;
 
 function Layout({ children }) {
     return (
         <>
             <GlobalStyles />
 
-            <Nav />
+            <Container>
+                <Aside />
+                <div>
+                    <Nav />
 
-            <AnimatePresence exitBeforeEnter>
-                <main>{children}</main>
-            </AnimatePresence>
+                    <AnimatePresence exitBeforeEnter>
+                        <main>{children}</main>
+                    </AnimatePresence>
 
-            <Footer />
+                    <Footer />
+                </div>
+            </Container>
         </>
     );
 }
