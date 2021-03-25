@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 const StyledMenu = styled.div`
     display: flex;

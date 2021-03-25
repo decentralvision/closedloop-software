@@ -10,13 +10,13 @@ export const fadeIn = {
     },
 };
 
-export const divider = {
+export const slideIn = {
     initial: { width: 0 },
     animate: {
         width: '100%',
         transition: {
             duration: 0.6,
-            delay: 2,
+            delay: 1,
             ease: 'easeIn',
         },
     },
