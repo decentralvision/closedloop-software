@@ -15,7 +15,6 @@ const StyledMenu = styled.div`
     left: 0;
     margin-top: var(--space-64);
     overflow: hidden;
-    transition: width 0.4s ease-in-out;
 
     @media (min-width: 768px) {
         height: 100%;
@@ -86,7 +85,10 @@ const Menu = ({ open, setOpen }) => {
 
     if (open) {
         document.body.style.position = 'fixed';
-        document.body.style.top = `-${window.scrollY}px`;
+        document.body.style.top = `0`;
+        document.body.style.right = `0`;
+        document.body.style.bottom = `0`;
+        document.body.style.left = `0`;
     } else {
         const scrollY = document.body.style.top;
         document.body.style.position = '';

@@ -1,24 +1,151 @@
 import React from 'react';
+import { graphql } from 'gatsby';
+import PortableText from '@sanity/block-content-to-react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { SEO, Intro } from '../components';
+import serializers from '../serializers';
 
-const StyledForm = styled.form`
+export const query = graphql`
+    query ContactPageQuery {
+        contact: sanityContact {
+            title
+            _rawDescription
+            number
+            email
+        }
+    }
+`;
+
+const StyledContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    @media (min-width: 1280px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+`;
+
+const StyledWrapper = styled.div`
+    padding: var(--space-48) var(--space-24);
+
+    @media (min-width: 768px) {
+        padding: var(--space-48);
+    }
+
+    @media (min-width: 1024px) {
+        padding: var(--space-64);
+    }
+
+    @media (min-width: 1280px) {
+        padding: var(--space-96);
+    }
+
+    @media (min-width: 1536px) {
+        padding: var(--space-128);
+    }
+`;
+
+const StyledInformation = styled.div`
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--gray-400);
+
+    h1 {
+        color: var(--gray-700);
+        font-size: var(--space-64);
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    a {
+        font-weight: 600;
+    }
+
+    .contact {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--gray-400);
+        border-bottom: 1px solid var(--gray-400);
+        padding: var(--space-48) var(--space-24);
+
+        @media (min-width: 768px) {
+            padding: var(--space-48) var(--space-48);
+        }
+
+        @media (min-width: 1024px) {
+            padding: var(--space-48) var(--space-64);
+        }
+
+        @media (min-width: 1280px) {
+            padding: var(--space-48) var(--space-96);
+        }
+
+        @media (min-width: 1536px) {
+            padding: var(--space-48) var(--space-128);
+        }
+    }
+`;
+
+const StyledForm = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-48) var(--space-24);
+
+    @media (min-width: 768px) {
+        padding: var(--space-48);
+    }
+
+    @media (min-width: 1024px) {
+        padding: var(--space-64);
+    }
+
+    @media (min-width: 1280px) {
+        padding: var(--space-96);
+    }
+
+    @media (min-width: 1536px) {
+        padding: var(--space-128);
+    }
+
+    label {
+        margin-bottom: var(--space-16);
+
+        input,
+        textarea {
+            margin-top: var(--space-4);
+        }
+    }
+
+    h2 {
+        color: var(--gray-700);
+        text-align: left;
+        margin-bottom: var(--space-64);
+        font-size: var(--space-40);
+        font-weight: 600;
+    }
+
     textarea,
     input {
         width: 100%;
         padding: var(--space-12) var(--space-16);
         background: transparent;
-        border: 2px solid var(--gray-300);
+        border: 1px solid var(--gray-500);
         color: var(--gray-700);
     }
 
-    label {
-        margin: var(--space-16) var(--space-0);
+    button {
+        width: 100%;
+        color: var(--gray-50);
+        font-weight: 700;
+        font-size: var(--space-24);
+        text-transform: uppercase;
+        background-color: var(--gray-700);
+        padding: var(--space-16) var(--space-8);
 
-        span {
-            color: var(--gray-900);
+        :hover {
+            background-color: var(--gray-800);
         }
     }
 `;
@@ -29,19 +156,10 @@ const content = (isFirstMount) => ({
     },
 });
 
-const container = {
-    initial: { y: -20, opacity: 0 },
-    animate: {
-        y: 0,
-        opacity: 1,
-        transition: {
-            duration: 0.7,
-            ease: [0.6, -0.05, 0.01, 0.99],
-        },
-    },
-};
+export default function ContactPage(props) {
+    const { location, data } = props;
+    const { title, number, email, _rawDescription } = data.contact;
 
-export default function ContactPage({ location }) {
     const isFirstMount = !location.action;
 
     return (
@@ -52,10 +170,27 @@ export default function ContactPage({ location }) {
                 {isFirstMount && <Intro />}
 
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
-                    <motion.div variants={container}>
-                        <StyledForm method="POST" netlify-honeypot="bot-field" data-netlify="true">
+                    <StyledContainer>
+                        <StyledInformation>
+                            <StyledWrapper>
+                                <h1>{title}</h1>
+                            </StyledWrapper>
+                            <div className="contact">
+                                <a href={`tel:${number}`}>{number}</a>
+                                <a href={`mailto:${email}`}>{email}</a>
+                            </div>
+                        </StyledInformation>
+
+                        <StyledForm
+                            name="contact"
+                            method="POST"
+                            netlify-honeypot="bot-field"
+                            data-netlify="true"
+                        >
                             <input type="hidden" name="bot-field" />
                             <input type="hidden" name="form-name" value="contact" />
+
+                            <PortableText blocks={_rawDescription} serializers={serializers} />
 
                             <label htmlFor="name">
                                 <span>Name</span>
@@ -89,9 +224,9 @@ export default function ContactPage({ location }) {
                                 <textarea id="question" name="question" rows="8" />
                             </label>
 
-                            <button type="submit">Submit</button>
+                            <button type="submit">Send Request</button>
                         </StyledForm>
-                    </motion.div>
+                    </StyledContainer>
                 </motion.div>
             </motion.section>
         </>
@@ -100,4 +235,5 @@ export default function ContactPage({ location }) {
 
 ContactPage.propTypes = {
     location: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
 };

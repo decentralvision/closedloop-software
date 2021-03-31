@@ -10,14 +10,13 @@ const StyledAside = styled.aside`
     justify-content: space-between;
     height: var(--space-64);
     padding: var(--space-0) var(--space-16);
-    border-bottom: 2px solid var(--gray-800);
 
     @media (min-width: 768px) {
         position: fixed;
         top: 0;
         left: 0;
         background-color: var(--white);
-        border-right: 2px solid var(--gray-800);
+        border-right: 1px solid var(--gray-800);
         border-bottom: none;
         height: 100vh;
         width: var(--space-96);

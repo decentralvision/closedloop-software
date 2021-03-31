@@ -15,6 +15,8 @@ const Container = styled.div`
     }
 
     & > div {
+        flex: 1;
+
         @media (min-width: 768px) {
             margin-left: var(--space-96);
         }

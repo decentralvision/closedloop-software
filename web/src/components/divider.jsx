@@ -5,7 +5,7 @@ import { slideIn } from './animations';
 
 const StyledDivider = styled.div`
     width: 100%;
-    height: var(--space-2);
+    height: var(--space-1);
     background-color: var(--gray-400);
 `;
 

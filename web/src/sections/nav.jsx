@@ -14,12 +14,23 @@ const StyledNav = styled.nav`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: var(--space-64);
         height: var(--space-96);
     }
 
     .logo {
-        padding: var(--space-0) var(--space-128);
+        padding: var(--space-0) var(--space-48);
+
+        @media (min-width: 1024px) {
+            padding: var(--space-0) var(--space-64);
+        }
+
+        @media (min-width: 1280px) {
+            padding: var(--space-0) var(--space-96);
+        }
+
+        @media (min-width: 1536px) {
+            padding: var(--space-0) var(--space-128);
+        }
 
         img {
             max-width: var(--space-80);

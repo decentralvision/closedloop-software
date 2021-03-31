@@ -103,6 +103,10 @@ select {
     text-transform: none;
 }
 
+form {
+    margin: 0;
+}
+
 button {
     background-color: transparent;
     background-image: none;
