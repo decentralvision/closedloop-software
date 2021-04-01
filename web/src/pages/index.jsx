@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { SEO, Intro } from '../components';
+import { SEO, Intro, Video } from '../components';
 
 const content = (isFirstMount) => ({
     animate: {
@@ -31,6 +31,7 @@ export default function IndexPage({ location }) {
                 {isFirstMount && <Intro />}
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
                     <motion.div variants={container}>
+                        <Video />
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Quis vel eros donec ac
                         odio. Id velit ut tortor pretium viverra suspendisse potenti nullam ac.

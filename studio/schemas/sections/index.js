@@ -1,1 +1,2 @@
-export { default as hero } from './contact';
+export { default as contact } from './contact';
+export { default as video } from './video';
