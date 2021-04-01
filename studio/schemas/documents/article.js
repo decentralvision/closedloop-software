@@ -20,11 +20,13 @@ export default {
                 source: 'title',
                 maxLength: 96,
             },
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'Published Date',
             name: 'date',
             type: 'date',
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'Author',
@@ -37,6 +39,7 @@ export default {
             title: 'Excerpt',
             name: 'excerpt',
             type: 'text',
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'Image',
@@ -51,6 +54,7 @@ export default {
             title: 'Content',
             name: 'content',
             type: 'portableText',
+            validation: (Rule) => Rule.required(),
         },
     ],
 
