@@ -1,13 +1,23 @@
 export default {
     type: 'document',
-    title: 'Solutions',
-    name: 'solutions',
+    title: 'Platforms',
+    name: 'platforms',
     fields: [
         {
             title: 'Title',
             name: 'title',
             type: 'string',
             validation: (Rule) => Rule.required(),
+        },
+        {
+            title: 'List',
+            name: 'list',
+            type: 'array',
+            of: [{ type: 'string' }],
+            options: {
+                layout: 'tags',
+                sortable: false,
+            },
         },
         {
             title: 'Content',

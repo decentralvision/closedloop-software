@@ -5,10 +5,9 @@ import styled from 'styled-components';
 import serializers from '../serializers';
 
 const query = graphql`
-    query PlatformsQuery {
-        platforms: sanityPlatforms {
+    query SolutionsQuery {
+        solutions: sanitySolutions {
             title
-            list
             _rawContent
         }
     }
@@ -17,34 +16,17 @@ const query = graphql`
 const StyledContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    border-bottom: 1px solid var(--gray-300);
-    background-color: var(--gray-100);
 
     @media (min-width: 1280px) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     header {
-        border-bottom: 1px solid var(--gray-300);
-
-        @media (min-width: 1280px) {
-            border-right: 1px solid var(--gray-300);
-            border-bottom: none;
-        }
-
         h2 {
             text-transform: uppercase;
             font-size: var(--space-48);
             font-weight: 600;
-            max-width: 12ch;
-        }
-
-        ul {
-            margin-top: var(--space-48);
-
-            li {
-                text-transform: uppercase;
-            }
+            max-width: 16ch;
         }
     }
 `;
@@ -70,19 +52,14 @@ const StyledWrapper = styled.div`
 `;
 
 export default function Platforms() {
-    const { platforms } = useStaticQuery(query);
-    const { title, list, _rawContent } = platforms;
+    const { solutions } = useStaticQuery(query);
+    const { title, _rawContent } = solutions;
 
     return (
         <StyledContainer>
             <header>
                 <StyledWrapper>
                     <h2>{title}</h2>
-                    <ul>
-                        {list.map((item, index) => (
-                            <li key={index}>{item}</li>
-                        ))}
-                    </ul>
                 </StyledWrapper>
             </header>
             <section>

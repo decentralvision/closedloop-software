@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { SEO, Intro, Video } from '../components';
-import { Platforms } from '../sections';
+import { SEO, Intro } from '../components';
+import { Platforms, Solutions, Video } from '../sections';
 
 const content = (isFirstMount) => ({
     animate: {
@@ -33,6 +33,7 @@ export default function IndexPage({ location }) {
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
                     <motion.div variants={container}>
                         <Video />
+                        <Solutions />
                         <Platforms />
                     </motion.div>
                 </motion.div>
