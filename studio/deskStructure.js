@@ -1,7 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { MdSettings, MdExtension, MdContactMail, MdVideoLibrary } from 'react-icons/md';
+import { MdSettings, MdExtension, MdContactMail, MdVideoLibrary, MdPolymer } from 'react-icons/md';
 
-const hiddenTypes = ['metadata', 'contact', 'video'];
+const hiddenTypes = ['metadata', 'contact', 'video', 'platforms'];
 
 export default () =>
     S.list()
@@ -32,6 +32,15 @@ export default () =>
                                         .id('contact')
                                         .schemaType('contact')
                                         .documentId('contact'),
+                                ),
+                            S.listItem()
+                                .title('Platforms')
+                                .icon(MdPolymer)
+                                .child(
+                                    S.editor()
+                                        .id('platforms')
+                                        .schemaType('platforms')
+                                        .documentId('platforms'),
                                 ),
                         ]),
                 ),
