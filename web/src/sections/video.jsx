@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const StyledVideo = styled.video`
     width: 100%;
-    z-index: -1;
 `;
 
 const query = graphql`

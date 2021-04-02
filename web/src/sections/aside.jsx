@@ -10,6 +10,7 @@ const StyledAside = styled.aside`
     justify-content: space-between;
     height: var(--space-64);
     padding: var(--space-0) var(--space-16);
+    z-index: 50;
 
     @media (min-width: 768px) {
         position: fixed;
@@ -33,8 +34,8 @@ const Aside = () => {
         <StyledAside>
             <Logo />
             <nav aria-label="Main navigation">
-                <Burger open={open} setOpen={setOpen} />
                 <Menu open={open} setOpen={setOpen} />
+                <Burger open={open} setOpen={setOpen} />
             </nav>
         </StyledAside>
     );

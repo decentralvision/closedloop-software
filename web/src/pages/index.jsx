@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { SEO, Intro } from '../components';
-import { Platforms, Solutions, Video } from '../sections';
+import { Platforms, Solutions, Video, Carousel } from '../sections';
 
 const content = (isFirstMount) => ({
     animate: {
@@ -35,6 +35,7 @@ export default function IndexPage({ location }) {
                         <Video />
                         <Solutions />
                         <Platforms />
+                        <Carousel />
                     </motion.div>
                 </motion.div>
             </motion.section>

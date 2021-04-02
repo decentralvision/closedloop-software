@@ -15,7 +15,6 @@ const StyledMenu = styled.div`
     left: 0;
     margin-top: var(--space-64);
     overflow: hidden;
-    z-index: 10;
 
     @media (min-width: 768px) {
         height: 100%;
