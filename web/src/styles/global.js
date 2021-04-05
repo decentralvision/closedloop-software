@@ -19,7 +19,12 @@ const GlobalStyles = createGlobalStyle`
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: var(--gray-300);
+        background-color: var(--gray-900);
+    }
+
+    ::selection {
+        background: var(--gray-900);
+        color: var(--gray-100);
     }
 `;
 
