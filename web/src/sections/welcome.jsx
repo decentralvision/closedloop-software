@@ -5,28 +5,47 @@ import styled from 'styled-components';
 import serializers from '../serializers';
 
 const query = graphql`
-    query SolutionsQuery {
-        solutions: sanitySolutions {
+    query WelcomeQuery {
+        welcome: sanityWelcome {
             title
+            _rawDescription
             _rawContent
         }
     }
 `;
 
 const StyledContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-
-    @media (min-width: 1280px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    width: 100%;
+    background-color: var(--gray-100);
 
     header {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        text-align: right;
+
         h2 {
-            text-transform: uppercase;
             font-size: var(--space-48);
             font-weight: 600;
-            max-width: 16ch;
+        }
+        p {
+            max-width: 64ch;
+            margin-top: var(--space-24);
+        }
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        margin-top: var(--space-64);
+
+        p {
+            font-size: var(--space-24);
+            font-weight: 600;
         }
     }
 `;
@@ -51,22 +70,21 @@ const StyledWrapper = styled.div`
     }
 `;
 
-export default function Solutions() {
-    const { solutions } = useStaticQuery(query);
-    const { title, _rawContent } = solutions;
+export default function Platforms() {
+    const { welcome } = useStaticQuery(query);
+    const { title, _rawDescription, _rawContent } = welcome;
 
     return (
         <StyledContainer>
-            <header>
-                <StyledWrapper>
+            <StyledWrapper>
+                <header>
                     <h2>{title}</h2>
-                </StyledWrapper>
-            </header>
-            <section>
-                <StyledWrapper>
+                    <PortableText blocks={_rawDescription} serializers={serializers} />
+                </header>
+                <section>
                     <PortableText blocks={_rawContent} serializers={serializers} />
-                </StyledWrapper>
-            </section>
+                </section>
+            </StyledWrapper>
         </StyledContainer>
     );
 }

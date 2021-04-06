@@ -7,9 +7,10 @@ import {
     MdPolymer,
     MdDonutSmall,
     MdBrokenImage,
+    MdSpeakerNotes,
 } from 'react-icons/md';
 
-const hiddenTypes = ['metadata', 'contact', 'video', 'platforms', 'solutions', 'desk'];
+const hiddenTypes = ['metadata', 'contact', 'video', 'platforms', 'solutions', 'desk', 'welcome'];
 
 export default () =>
     S.list()
@@ -63,6 +64,15 @@ export default () =>
                                 .title('Desk')
                                 .icon(MdBrokenImage)
                                 .child(S.editor().id('desk').schemaType('desk').documentId('desk')),
+                            S.listItem()
+                                .title('Welcome')
+                                .icon(MdSpeakerNotes)
+                                .child(
+                                    S.editor()
+                                        .id('welcome')
+                                        .schemaType('welcome')
+                                        .documentId('welcome'),
+                                ),
                         ]),
                 ),
             ...S.documentTypeListItems().filter(
