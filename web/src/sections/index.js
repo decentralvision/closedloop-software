@@ -5,3 +5,4 @@ export { default as Platforms } from './platforms';
 export { default as Solutions } from './solutions';
 export { default as Video } from './video';
 export { default as Carousel } from './carousel';
+export { default as Desk } from './desk';

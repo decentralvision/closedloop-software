@@ -6,9 +6,10 @@ import {
     MdVideoLibrary,
     MdPolymer,
     MdDonutSmall,
+    MdBrokenImage,
 } from 'react-icons/md';
 
-const hiddenTypes = ['metadata', 'contact', 'video', 'platforms', 'solutions'];
+const hiddenTypes = ['metadata', 'contact', 'video', 'platforms', 'solutions', 'desk'];
 
 export default () =>
     S.list()
@@ -58,6 +59,10 @@ export default () =>
                                         .schemaType('solutions')
                                         .documentId('solutions'),
                                 ),
+                            S.listItem()
+                                .title('Desk')
+                                .icon(MdBrokenImage)
+                                .child(S.editor().id('desk').schemaType('desk').documentId('desk')),
                         ]),
                 ),
             ...S.documentTypeListItems().filter(
