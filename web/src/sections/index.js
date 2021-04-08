@@ -7,3 +7,4 @@ export { default as Video } from './video';
 export { default as Carousel } from './carousel';
 export { default as Desk } from './desk';
 export { default as Welcome } from './welcome';
+export { default as Brand } from './brand';

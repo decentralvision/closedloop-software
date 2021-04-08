@@ -8,9 +8,19 @@ import {
     MdDonutSmall,
     MdBrokenImage,
     MdSpeakerNotes,
+    MdAlbum,
 } from 'react-icons/md';
 
-const hiddenTypes = ['metadata', 'contact', 'video', 'platforms', 'solutions', 'desk', 'welcome'];
+const hiddenTypes = [
+    'metadata',
+    'contact',
+    'video',
+    'platforms',
+    'solutions',
+    'desk',
+    'welcome',
+    'brand',
+];
 
 export default () =>
     S.list()
@@ -72,6 +82,12 @@ export default () =>
                                         .id('welcome')
                                         .schemaType('welcome')
                                         .documentId('welcome'),
+                                ),
+                            S.listItem()
+                                .title('Brand')
+                                .icon(MdAlbum)
+                                .child(
+                                    S.editor().id('brand').schemaType('brand').documentId('brand'),
                                 ),
                         ]),
                 ),

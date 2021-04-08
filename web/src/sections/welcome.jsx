@@ -70,7 +70,7 @@ const StyledWrapper = styled.div`
     }
 `;
 
-export default function Platforms() {
+export default function Welcome() {
     const { welcome } = useStaticQuery(query);
     const { title, _rawDescription, _rawContent } = welcome;
 

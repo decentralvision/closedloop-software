@@ -4,6 +4,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import * as documents from './documents';
 import * as sections from './sections';
 import * as types from './types';
+import * as objects from './objects';
 
 export default createSchema({
     name: 'default',
@@ -11,5 +12,6 @@ export default createSchema({
         ...Object.values(documents),
         ...Object.values(sections),
         ...Object.values(types),
+        ...Object.values(objects),
     ]),
 });
