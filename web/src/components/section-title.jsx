@@ -17,9 +17,10 @@ const StyledTitle = styled.div`
     }
 
     h2 {
+        color: var(--gray-700);
+        text-transform: uppercase;
         font-size: var(--space-32);
-        color: var(--gray-50);
-        font-weight: 500;
+        font-weight: 600;
 
         @media (min-width: 768px) {
             font-size: var(--space-48);
@@ -27,12 +28,17 @@ const StyledTitle = styled.div`
     }
 `;
 
-export default function SectionTitle({ title, suptitle }) {
-    const newTitle = title.split('\n').map((str) => <h2>{str}</h2>);
+export default function SectionTitle({ title, suptitle, light }) {
+    const newTitle = title.split('\n').map((str) => {
+        if (light) {
+            return <h2 style={{ color: 'var(--gray-100)' }}>{str}</h2>;
+        }
+        return <h2>{str}</h2>;
+    });
 
     return (
         <StyledTitle>
-            <p>{suptitle}</p>
+            {suptitle != null && <p>{suptitle}</p>}
             {newTitle}
         </StyledTitle>
     );
@@ -40,5 +46,11 @@ export default function SectionTitle({ title, suptitle }) {
 
 SectionTitle.propTypes = {
     title: PropTypes.string.isRequired,
-    suptitle: PropTypes.string.isRequired,
+    suptitle: PropTypes.string,
+    light: PropTypes.bool,
+};
+
+SectionTitle.defaultProps = {
+    suptitle: null,
+    light: false,
 };

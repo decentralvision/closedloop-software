@@ -4,6 +4,7 @@ import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import serializers from '../serializers';
+import { Wrapper, SectionTitle } from '../components';
 
 const query = graphql`
     query BrandQuery {
@@ -64,34 +65,9 @@ const StyledGrid = styled.div`
 `;
 
 const StyledHeader = styled.header`
-    h2 {
-        font-size: var(--space-48);
-        font-weight: 600;
-    }
-
     p {
         max-width: 76ch;
         margin-top: var(--space-24);
-    }
-`;
-
-const StyledWrapper = styled.div`
-    padding: var(--space-48) var(--space-24);
-
-    @media (min-width: 768px) {
-        padding: var(--space-64) var(--space-48);
-    }
-
-    @media (min-width: 1024px) {
-        padding: var(--space-128) var(--space-64);
-    }
-
-    @media (min-width: 1280px) {
-        padding: var(--space-144) var(--space-96);
-    }
-
-    @media (min-width: 1536px) {
-        padding: var(--space-176) var(--space-128);
     }
 `;
 
@@ -100,24 +76,22 @@ export default function Brand() {
     const { title, _rawContent, channels } = brand;
 
     return (
-        <StyledWrapper>
+        <Wrapper>
             <StyledHeader>
-                <h2>{title}</h2>
+                <SectionTitle title={title} />
                 <PortableText blocks={_rawContent} serializers={serializers} />
             </StyledHeader>
-            <section>
-                {channels.map((item, index) => (
-                    <StyledGrid key={index}>
-                        <div>
-                            <Img fluid={item.image.asset.fluid} alt={title} />
-                        </div>
-                        <article>
-                            <h3>{item.title}</h3>
-                            <PortableText blocks={item._rawContent} serializers={serializers} />
-                        </article>
-                    </StyledGrid>
-                ))}
-            </section>
-        </StyledWrapper>
+            {channels.map((item, index) => (
+                <StyledGrid key={index}>
+                    <div>
+                        <Img fluid={item.image.asset.fluid} alt={title} />
+                    </div>
+                    <article>
+                        <h3>{item.title}</h3>
+                        <PortableText blocks={item._rawContent} serializers={serializers} />
+                    </article>
+                </StyledGrid>
+            ))}
+        </Wrapper>
     );
 }

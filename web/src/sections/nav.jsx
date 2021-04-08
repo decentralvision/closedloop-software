@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { IoChatbox } from 'react-icons/io5';
-import { motion } from 'framer-motion';
 import wordmark from '../images/wordmark.svg';
-import { fadeIn } from '../components/animations';
 
 const StyledNav = styled.nav`
     display: none;
@@ -58,18 +56,14 @@ const StyledNav = styled.nav`
 
 export default function Nav() {
     return (
-        <>
-            <motion.div initial="initial" animate="animate" variants={fadeIn}>
-                <StyledNav>
-                    <div className="logo">
-                        <img src={wordmark} alt="individ" />
-                    </div>
-                    <Link className="contact" to="/contact/">
-                        <span>Let&apos;s talk</span>
-                        <IoChatbox />
-                    </Link>
-                </StyledNav>
-            </motion.div>
-        </>
+        <StyledNav>
+            <div className="logo">
+                <img src={wordmark} alt="individ" />
+            </div>
+            <Link className="contact" to="/contact/">
+                <span>Let&apos;s talk</span>
+                <IoChatbox />
+            </Link>
+        </StyledNav>
     );
 }

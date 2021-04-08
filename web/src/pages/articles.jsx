@@ -4,25 +4,14 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import MapEdgesToNodes from '../lib/map-edges-to-nodes';
-import { SEO, Intro, ArticleCard } from '../components';
+import { SEO, Intro, ArticleCard, Wrapper } from '../components';
+import { fadeIn } from '../components/animations';
 
 const content = (isFirstMount) => ({
     animate: {
         transition: { staggerChildren: 0.1, delayChildren: isFirstMount ? 2 : 0 },
     },
 });
-
-const container = {
-    initial: { y: -20, opacity: 0 },
-    animate: {
-        y: 0,
-        opacity: 1,
-        transition: {
-            duration: 0.6,
-            ease: 'easeIn',
-        },
-    },
-};
 
 export const query = graphql`
     query BlogPageQuery {
@@ -71,26 +60,6 @@ const StyledGrid = styled.div`
     }
 `;
 
-const StyledWrapper = styled.div`
-    padding: var(--space-48) var(--space-24);
-
-    @media (min-width: 768px) {
-        padding: var(--space-48);
-    }
-
-    @media (min-width: 1024px) {
-        padding: var(--space-64);
-    }
-
-    @media (min-width: 1280px) {
-        padding: var(--space-96);
-    }
-
-    @media (min-width: 1536px) {
-        padding: var(--space-128);
-    }
-`;
-
 const ArticlePage = (props) => {
     const { data, location } = props;
     const isFirstMount = !location.action;
@@ -103,8 +72,8 @@ const ArticlePage = (props) => {
             <motion.section key={location.key} exit={{ opacity: 0 }}>
                 {isFirstMount && <Intro />}
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
-                    <StyledWrapper>
-                        <StyledGrid as={motion.div} variants={container}>
+                    <Wrapper>
+                        <StyledGrid as={motion.div} variants={fadeIn}>
                             {articles.map((item) => (
                                 <ArticleCard
                                     key={item.id}
@@ -115,7 +84,7 @@ const ArticlePage = (props) => {
                                 />
                             ))}
                         </StyledGrid>
-                    </StyledWrapper>
+                    </Wrapper>
                 </motion.div>
             </motion.section>
         </>

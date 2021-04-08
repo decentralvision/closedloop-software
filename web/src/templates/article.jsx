@@ -5,8 +5,9 @@ import PortableText from '@sanity/block-content-to-react';
 import Img from 'gatsby-image';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { SEO, Intro } from '../components';
+import { SEO, Intro, Wrapper } from '../components';
 import serializers from '../serializers';
+import { fadeIn } from '../components/animations';
 
 export const query = graphql`
     query($slug: String!) {
@@ -37,18 +38,6 @@ const content = (isFirstMount) => ({
         transition: { staggerChildren: 0.1, delayChildren: isFirstMount ? 2 : 0 },
     },
 });
-
-const container = {
-    initial: { y: -20, opacity: 0 },
-    animate: {
-        y: 0,
-        opacity: 1,
-        transition: {
-            duration: 0.6,
-            ease: 'easeIn',
-        },
-    },
-};
 
 const Navigation = styled.ul`
     display: flex;
@@ -117,23 +106,6 @@ const Navigation = styled.ul`
 const StyledArticle = styled.div`
     article {
         grid-column: span 3 / span 3;
-        padding: var(--space-24);
-
-        @media (min-width: 768px) {
-            padding: var(--space-48);
-        }
-
-        @media (min-width: 1024px) {
-            padding: var(--space-64);
-        }
-
-        @media (min-width: 1280px) {
-            padding: var(--space-96);
-        }
-
-        @media (min-width: 1536px) {
-            padding: var(--space-128);
-        }
 
         h1 {
             font-size: var(--space-32);
@@ -186,7 +158,7 @@ export default function ArticleTemplate({ data, pageContext, location }) {
             <motion.section key={location.key} exit={{ opacity: 0 }}>
                 {isFirstMount && <Intro />}
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
-                    <StyledArticle as={motion.div} variants={container}>
+                    <StyledArticle as={motion.div} variants={fadeIn}>
                         <header>
                             <Img fluid={article.image.asset.fluid} alt={article.title} />
                         </header>
@@ -194,17 +166,19 @@ export default function ArticleTemplate({ data, pageContext, location }) {
                         <StyledContainer>
                             <aside />
                             <article>
-                                <h1>{article.title}</h1>
+                                <Wrapper>
+                                    <h1>{article.title}</h1>
 
-                                <div className="meta">
-                                    <h3>By {article.author.name}</h3>
-                                    <span>{article.date}</span>
-                                </div>
+                                    <div className="meta">
+                                        <h3>By {article.author.name}</h3>
+                                        <span>{article.date}</span>
+                                    </div>
 
-                                <PortableText
-                                    blocks={article._rawContent}
-                                    serializers={serializers}
-                                />
+                                    <PortableText
+                                        blocks={article._rawContent}
+                                        serializers={serializers}
+                                    />
+                                </Wrapper>
                             </article>
                         </StyledContainer>
 

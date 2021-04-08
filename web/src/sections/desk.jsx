@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import serializers from '../serializers';
+import { Wrapper, SectionTitle } from '../components';
 
 const query = graphql`
     query DeskQuery {
@@ -30,12 +31,6 @@ const StyledContainer = styled.div`
             border-bottom: none;
         }
 
-        h2 {
-            text-transform: uppercase;
-            font-size: var(--space-48);
-            font-weight: 600;
-        }
-
         ul {
             margin-top: var(--space-48);
 
@@ -46,26 +41,6 @@ const StyledContainer = styled.div`
     }
 `;
 
-const StyledWrapper = styled.div`
-    padding: var(--space-48) var(--space-24);
-
-    @media (min-width: 768px) {
-        padding: var(--space-64) var(--space-48);
-    }
-
-    @media (min-width: 1024px) {
-        padding: var(--space-128) var(--space-64);
-    }
-
-    @media (min-width: 1280px) {
-        padding: var(--space-144) var(--space-96);
-    }
-
-    @media (min-width: 1536px) {
-        padding: var(--space-176) var(--space-128);
-    }
-`;
-
 export default function Desk() {
     const { desk } = useStaticQuery(query);
     const { title, _rawContent } = desk;
@@ -73,15 +48,13 @@ export default function Desk() {
     return (
         <StyledContainer>
             <header>
-                <StyledWrapper>
-                    <h2>{title}</h2>
-                </StyledWrapper>
+                <Wrapper>
+                    <SectionTitle title={title} />
+                </Wrapper>
             </header>
-            <section>
-                <StyledWrapper>
-                    <PortableText blocks={_rawContent} serializers={serializers} />
-                </StyledWrapper>
-            </section>
+            <Wrapper>
+                <PortableText blocks={_rawContent} serializers={serializers} />
+            </Wrapper>
         </StyledContainer>
     );
 }

@@ -93,7 +93,7 @@ export default function Footer() {
     return (
         <StyledFooter>
             <StyledWrapper>
-                <SectionTitle title={'Strategy\nApplication'} suptitle="services" />
+                <SectionTitle title={'Strategy\nApplication'} suptitle="services" light />
 
                 <StyledLinks>
                     <ul>

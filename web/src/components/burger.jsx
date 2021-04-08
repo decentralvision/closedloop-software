@@ -10,13 +10,13 @@ const StyledBurger = styled.button`
 
     span {
         display: block;
-        width: var(--space-28);
+        width: var(--space-24);
         height: var(--space-2);
         background-color: var(--gray-700);
         transition: width 0.4s ease-in-out;
 
         :nth-child(2) {
-            margin: var(--space-6) var(--space-0);
+            margin: var(--space-4) var(--space-0);
         }
 
         :nth-child(1) {

@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import serializers from '../serializers';
+import { Wrapper } from '../components';
 
 const query = graphql`
     query WelcomeQuery {
@@ -49,32 +50,12 @@ const StyledContainer = styled.div`
     }
 `;
 
-const StyledWrapper = styled.div`
-    padding: var(--space-48) var(--space-24);
-
-    @media (min-width: 768px) {
-        padding: var(--space-64) var(--space-48);
-    }
-
-    @media (min-width: 1024px) {
-        padding: var(--space-128) var(--space-64);
-    }
-
-    @media (min-width: 1280px) {
-        padding: var(--space-144) var(--space-96);
-    }
-
-    @media (min-width: 1536px) {
-        padding: var(--space-176) var(--space-128);
-    }
-`;
-
 export default function Welcome() {
     const { welcome } = useStaticQuery(query);
 
     return (
         <StyledContainer>
-            <StyledWrapper>
+            <Wrapper>
                 <header>
                     <h2>{welcome.title}</h2>
                     <PortableText blocks={welcome._rawDescription} serializers={serializers} />
@@ -82,7 +63,7 @@ export default function Welcome() {
                 <section>
                     <PortableText blocks={welcome._rawContent} serializers={serializers} />
                 </section>
-            </StyledWrapper>
+            </Wrapper>
         </StyledContainer>
     );
 }

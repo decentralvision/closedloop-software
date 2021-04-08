@@ -4,7 +4,7 @@ import PortableText from '@sanity/block-content-to-react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { SEO, Intro } from '../components';
+import { SEO, Intro, Wrapper } from '../components';
 import serializers from '../serializers';
 
 export const query = graphql`
@@ -24,26 +24,6 @@ const StyledContainer = styled.div`
 
     @media (min-width: 1280px) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-`;
-
-const StyledWrapper = styled.div`
-    padding: var(--space-48) var(--space-24);
-
-    @media (min-width: 768px) {
-        padding: var(--space-48);
-    }
-
-    @media (min-width: 1024px) {
-        padding: var(--space-64);
-    }
-
-    @media (min-width: 1280px) {
-        padding: var(--space-96);
-    }
-
-    @media (min-width: 1536px) {
-        padding: var(--space-128);
     }
 `;
 
@@ -91,23 +71,6 @@ const StyledInformation = styled.div`
 const StyledForm = styled.div`
     display: flex;
     flex-direction: column;
-    padding: var(--space-48) var(--space-24);
-
-    @media (min-width: 768px) {
-        padding: var(--space-48);
-    }
-
-    @media (min-width: 1024px) {
-        padding: var(--space-64);
-    }
-
-    @media (min-width: 1280px) {
-        padding: var(--space-96);
-    }
-
-    @media (min-width: 1536px) {
-        padding: var(--space-128);
-    }
 
     label {
         margin-bottom: var(--space-16);
@@ -172,60 +135,62 @@ export default function ContactPage(props) {
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
                     <StyledContainer>
                         <StyledInformation>
-                            <StyledWrapper>
+                            <Wrapper>
                                 <h1>{title}</h1>
-                            </StyledWrapper>
+                            </Wrapper>
                             <div className="contact">
                                 <a href={`tel:${number}`}>{number}</a>
                                 <a href={`mailto:${email}`}>{email}</a>
                             </div>
                         </StyledInformation>
 
-                        <StyledForm
-                            name="contact"
-                            method="POST"
-                            netlify-honeypot="bot-field"
-                            data-netlify="true"
-                        >
-                            <input type="hidden" name="bot-field" />
-                            <input type="hidden" name="form-name" value="contact" />
+                        <Wrapper>
+                            <StyledForm
+                                name="contact"
+                                method="POST"
+                                netlify-honeypot="bot-field"
+                                data-netlify="true"
+                            >
+                                <input type="hidden" name="bot-field" />
+                                <input type="hidden" name="form-name" value="contact" />
 
-                            <PortableText blocks={_rawDescription} serializers={serializers} />
+                                <PortableText blocks={_rawDescription} serializers={serializers} />
 
-                            <label htmlFor="name">
-                                <span>Name</span>
-                                <input type="text" id="name" name="name" required />
-                            </label>
+                                <label htmlFor="name">
+                                    <span>Name</span>
+                                    <input type="text" id="name" name="name" required />
+                                </label>
 
-                            <label htmlFor="last_name">
-                                <span>Last Name</span>
-                                <input type="text" id="last_name" name="last_name" required />
-                            </label>
+                                <label htmlFor="last_name">
+                                    <span>Last Name</span>
+                                    <input type="text" id="last_name" name="last_name" required />
+                                </label>
 
-                            <label htmlFor="company">
-                                <span>Company</span>
-                                <input type="text" id="company" name="company" />
-                            </label>
+                                <label htmlFor="company">
+                                    <span>Company</span>
+                                    <input type="text" id="company" name="company" />
+                                </label>
 
-                            <label htmlFor="phone">
-                                <span>Phone</span>
-                                <input type="phone" id="phone" name="phone" required />
-                            </label>
+                                <label htmlFor="phone">
+                                    <span>Phone</span>
+                                    <input type="phone" id="phone" name="phone" required />
+                                </label>
 
-                            <label htmlFor="email">
-                                <span>Email</span>
-                                <input type="email" id="email" name="email" required />
-                            </label>
+                                <label htmlFor="email">
+                                    <span>Email</span>
+                                    <input type="email" id="email" name="email" required />
+                                </label>
 
-                            <label htmlFor="question">
-                                <span>
-                                    Have a question or an exciting new idea? Let&apos;s talk
-                                </span>
-                                <textarea id="question" name="question" rows="8" />
-                            </label>
+                                <label htmlFor="question">
+                                    <span>
+                                        Have a question or an exciting new idea? Let&apos;s talk
+                                    </span>
+                                    <textarea id="question" name="question" rows="8" />
+                                </label>
 
-                            <button type="submit">Send Request</button>
-                        </StyledForm>
+                                <button type="submit">Send Request</button>
+                            </StyledForm>
+                        </Wrapper>
                     </StyledContainer>
                 </motion.div>
             </motion.section>
