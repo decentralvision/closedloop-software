@@ -5,6 +5,7 @@ import Burger from '../components/burger';
 import Menu from '../components/menu';
 
 const StyledAside = styled.aside`
+    background-color: var(--primary);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,8 +17,7 @@ const StyledAside = styled.aside`
         position: fixed;
         top: 0;
         left: 0;
-        background-color: var(--white);
-        border-right: 1px solid var(--gray-800);
+        border-right: 1px solid var(--gray-500);
         border-bottom: none;
         height: 100vh;
         width: var(--space-96);

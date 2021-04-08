@@ -52,7 +52,7 @@ const StyledGrid = styled.div`
 `;
 
 const StyledWrapper = styled.div`
-    background-color: var(--gray-100);
+    background-color: var(--primary);
     padding: var(--space-48) var(--space-24);
 
     @media (min-width: 768px) {

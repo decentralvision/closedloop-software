@@ -118,7 +118,6 @@ const StyledArticle = styled.div`
     article {
         grid-column: span 3 / span 3;
         padding: var(--space-24);
-        border-left: 1px solid var(--gray-300);
 
         @media (min-width: 768px) {
             padding: var(--space-48);
@@ -168,6 +167,10 @@ const StyledContainer = styled.div`
 
     @media (min-width: 1280px) {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    aside {
+        background-color: var(--primary);
     }
 `;
 

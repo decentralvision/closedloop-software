@@ -15,11 +15,11 @@ const GlobalStyles = createGlobalStyle`
     }
 
     *::-webkit-scrollbar-track {
-        background: var(--gray-100);
+        background: var(--white);
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: var(--gray-900);
+        background-color: var(--gray-700);
     }
 
     ::selection {

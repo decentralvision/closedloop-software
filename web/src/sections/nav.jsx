@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { IoChatbox } from 'react-icons/io5';
 import { motion } from 'framer-motion';
-import { Divider } from '../components';
 import wordmark from '../images/wordmark.svg';
 import { fadeIn } from '../components/animations';
 
@@ -11,6 +10,8 @@ const StyledNav = styled.nav`
     display: none;
 
     @media (min-width: 768px) {
+        background-color: var(--primary);
+        border-bottom: 1px solid var(--gray-500);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -69,8 +70,6 @@ export default function Nav() {
                     </Link>
                 </StyledNav>
             </motion.div>
-
-            <Divider />
         </>
     );
 }

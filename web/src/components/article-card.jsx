@@ -53,5 +53,5 @@ ArticleCard.propTypes = {
     title: PropTypes.string.isRequired,
     excerpt: PropTypes.string.isRequired,
     image: PropTypes.object.isRequired,
-    slug: PropTypes.string.isRequired,
+    slug: PropTypes.object.isRequired,
 };

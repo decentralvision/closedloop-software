@@ -15,8 +15,7 @@ const query = graphql`
 `;
 
 const StyledContainer = styled.div`
-    width: 100%;
-    background-color: var(--gray-100);
+    background-color: var(--primary);
 
     header {
         display: flex;
@@ -72,17 +71,16 @@ const StyledWrapper = styled.div`
 
 export default function Welcome() {
     const { welcome } = useStaticQuery(query);
-    const { title, _rawDescription, _rawContent } = welcome;
 
     return (
         <StyledContainer>
             <StyledWrapper>
                 <header>
-                    <h2>{title}</h2>
-                    <PortableText blocks={_rawDescription} serializers={serializers} />
+                    <h2>{welcome.title}</h2>
+                    <PortableText blocks={welcome._rawDescription} serializers={serializers} />
                 </header>
                 <section>
-                    <PortableText blocks={_rawContent} serializers={serializers} />
+                    <PortableText blocks={welcome._rawContent} serializers={serializers} />
                 </section>
             </StyledWrapper>
         </StyledContainer>

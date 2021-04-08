@@ -12,7 +12,7 @@ const StyledBurger = styled.button`
         display: block;
         width: var(--space-28);
         height: var(--space-2);
-        background-color: var(--gray-500);
+        background-color: var(--gray-700);
         transition: width 0.4s ease-in-out;
 
         :nth-child(2) {

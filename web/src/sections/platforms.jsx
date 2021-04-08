@@ -17,8 +17,8 @@ const query = graphql`
 const StyledContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    border-bottom: 1px solid var(--gray-300);
-    background-color: var(--gray-100);
+    border-bottom: 1px solid var(--secondary);
+    background-color: var(--primary);
 
     @media (min-width: 1280px) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -28,7 +28,7 @@ const StyledContainer = styled.div`
         border-bottom: 1px solid var(--gray-300);
 
         @media (min-width: 1280px) {
-            border-right: 1px solid var(--gray-300);
+            border-right: 1px solid var(--secondary);
             border-bottom: none;
         }
 

@@ -63,12 +63,14 @@ const menuVariants = {
         width: '100%',
         transition: {
             duration: 0.4,
+            ease: 'easeIn',
         },
     },
     closed: {
         width: '0%',
         transition: {
             duration: 0.4,
+            ease: 'easeOut',
         },
     },
 };
