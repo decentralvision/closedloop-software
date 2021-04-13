@@ -1,7 +1,7 @@
 export default {
     type: 'document',
-    title: 'Solutions',
-    name: 'solutions',
+    title: 'Hero',
+    name: 'hero',
     fields: [
         {
             title: 'Title',
@@ -21,5 +21,16 @@ export default {
             type: 'portableText',
             validation: (Rule) => Rule.required(),
         },
+        {
+            title: 'Image',
+            name: 'image',
+            type: 'image',
+            validation: (Rule) => Rule.required(),
+        },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+    },
 };

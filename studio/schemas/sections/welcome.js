@@ -10,6 +10,12 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
+            title: 'Scroll ID',
+            name: 'scrollId',
+            type: 'string',
+            validation: (Rule) => Rule.required(),
+        },
+        {
             title: 'Description',
             name: 'description',
             type: 'portableText',

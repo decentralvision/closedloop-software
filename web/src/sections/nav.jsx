@@ -8,6 +8,9 @@ const StyledNav = styled.nav`
     display: none;
 
     @media (min-width: 768px) {
+        position: sticky;
+        top: 0;
+        z-index: 50;
         background-color: var(--primary);
         border-bottom: 1px solid var(--gray-500);
         display: flex;

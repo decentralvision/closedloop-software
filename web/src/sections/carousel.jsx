@@ -25,6 +25,10 @@ export const query = graphql`
                 }
             }
         }
+        carousel: sanityCarousel {
+            title
+            scrollId
+        }
     }
 `;
 
@@ -53,17 +57,19 @@ const StyledGrid = styled.div`
 `;
 
 const StyledCarousel = styled.section`
-    background-color: var(--primary);
+    margin-top: -64px;
+    padding-top: var(--space-64);
 `;
 
 export default function Carousel() {
-    const { article } = useStaticQuery(query);
+    const { article, carousel } = useStaticQuery(query);
+    const { title, scrollId } = carousel;
     const articles = MapEdgesToNodes(article);
 
     return (
-        <StyledCarousel>
+        <StyledCarousel id={scrollId}>
             <Wrapper>
-                <SectionTitle title="Latest Articles" />
+                <SectionTitle title={title} />
 
                 <StyledGrid>
                     {articles.map((item) => (

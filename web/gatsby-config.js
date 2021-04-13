@@ -31,6 +31,7 @@ module.exports = {
                 pathToConfigModule: 'src/lib/typography',
             },
         },
+        'gatsby-plugin-smoothscroll',
         'gatsby-plugin-postcss',
         'gatsby-plugin-styled-components',
         'gatsby-plugin-netlify',

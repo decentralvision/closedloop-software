@@ -9,12 +9,18 @@ const query = graphql`
     query SolutionsQuery {
         solutions: sanitySolutions {
             title
+            scrollId
             _rawContent
         }
     }
 `;
 
-const StyledContainer = styled.div`
+const StyledSolutions = styled.section`
+    margin-top: -64px;
+    padding-top: var(--space-64);
+`;
+
+const StyledGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
 
@@ -25,16 +31,18 @@ const StyledContainer = styled.div`
 
 export default function Solutions() {
     const { solutions } = useStaticQuery(query);
-    const { title, _rawContent } = solutions;
+    const { title, scrollId, _rawContent } = solutions;
 
     return (
-        <StyledContainer>
-            <Wrapper>
-                <SectionTitle title={title} />
-            </Wrapper>
-            <Wrapper>
-                <PortableText blocks={_rawContent} serializers={serializers} />
-            </Wrapper>
-        </StyledContainer>
+        <StyledSolutions id={scrollId}>
+            <StyledGrid>
+                <Wrapper>
+                    <SectionTitle title={title} />
+                </Wrapper>
+                <Wrapper>
+                    <PortableText blocks={_rawContent} serializers={serializers} />
+                </Wrapper>
+            </StyledGrid>
+        </StyledSolutions>
     );
 }

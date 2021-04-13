@@ -1,8 +1,20 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+
+const query = graphql`
+    query MenuQuery {
+        menu: sanityMenu {
+            navItems {
+                title
+                scrollId
+            }
+        }
+    }
+`;
 
 const StyledMenu = styled.div`
     display: flex;
@@ -33,12 +45,12 @@ const StyledMenu = styled.div`
             padding: var(--space-0) var(--space-24);
 
             @media (min-width: 768px) {
-                padding: var(--space-16) var(--space-128);
+                padding: var(--space-0) var(--space-128);
             }
         }
     }
 
-    h1 {
+    button {
         text-transform: uppercase;
         font-size: var(--space-24);
         font-weight: 700;
@@ -53,7 +65,7 @@ const StyledMenu = styled.div`
         }
 
         @media (min-width: 1280px) {
-            font-size: var(--space-80);
+            font-size: var(--space-64);
         }
     }
 `;
@@ -76,43 +88,28 @@ const menuVariants = {
 };
 
 const Menu = ({ open, setOpen }) => {
-    const isHidden = !!open;
-    const links = [
-        'Brand In Hand',
-        'On Your Desk',
-        'Adaptive Video',
-        'Supporting Platforms',
-        'Articles',
-    ];
+    const { menu } = useStaticQuery(query);
+    const { navItems } = menu;
 
-    if (open) {
-        document.body.style.position = 'fixed';
-        document.body.style.top = `0`;
-        document.body.style.right = `0`;
-        document.body.style.bottom = `0`;
-        document.body.style.left = `0`;
-    } else {
-        const scrollY = document.body.style.top;
-        document.body.style.position = '';
-        document.body.style.top = '';
-        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
-    }
+    const handleClick = (id) => {
+        setOpen(!open);
+        scrollTo(`#${id}`);
+    };
 
     return (
         <StyledMenu
             open={open}
-            aria-hidden={!isHidden}
             as={motion.div}
             initial={{ width: '0%' }}
             variants={menuVariants}
             animate={open ? 'opened' : 'closed'}
         >
             <ul>
-                {links.map((link) => (
-                    <li key={link}>
-                        <Link onClick={() => setOpen(!open)} to={`/${link.toLowerCase()}`}>
-                            <h1>{link}</h1>
-                        </Link>
+                {navItems.map((item, index) => (
+                    <li key={index}>
+                        <button type="button" onClick={() => handleClick(item.scrollId)}>
+                            {item.title}
+                        </button>
                     </li>
                 ))}
             </ul>

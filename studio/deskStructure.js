@@ -8,7 +8,11 @@ import {
     MdDonutSmall,
     MdBrokenImage,
     MdSpeakerNotes,
+    MdChromeReaderMode,
     MdAlbum,
+    MdNearMe,
+    MdViewAgenda,
+    MdFilter1,
 } from 'react-icons/md';
 
 const hiddenTypes = [
@@ -20,6 +24,9 @@ const hiddenTypes = [
     'desk',
     'welcome',
     'brand',
+    'hero',
+    'menu',
+    'carousel',
 ];
 
 export default () =>
@@ -30,6 +37,29 @@ export default () =>
                 .title('Metadata')
                 .icon(MdSettings)
                 .child(S.editor().id('metadata').schemaType('metadata').documentId('metadata')),
+            S.listItem()
+                .title('Menu')
+                .icon(MdNearMe)
+                .child(S.editor().id('menu').schemaType('menu').documentId('menu')),
+
+            S.listItem()
+                .title('Pages')
+                .icon(MdFilter1)
+                .child(
+                    S.list()
+                        .title('Pages')
+                        .items([
+                            S.listItem()
+                                .title('Contact')
+                                .icon(MdContactMail)
+                                .child(
+                                    S.editor()
+                                        .id('contact')
+                                        .schemaType('contact')
+                                        .documentId('contact'),
+                                ),
+                        ]),
+                ),
             S.listItem()
                 .title('Section')
                 .icon(MdExtension)
@@ -42,15 +72,6 @@ export default () =>
                                 .icon(MdVideoLibrary)
                                 .child(
                                     S.editor().id('video').schemaType('video').documentId('video'),
-                                ),
-                            S.listItem()
-                                .title('Contact')
-                                .icon(MdContactMail)
-                                .child(
-                                    S.editor()
-                                        .id('contact')
-                                        .schemaType('contact')
-                                        .documentId('contact'),
                                 ),
                             S.listItem()
                                 .title('Platforms')
@@ -88,6 +109,19 @@ export default () =>
                                 .icon(MdAlbum)
                                 .child(
                                     S.editor().id('brand').schemaType('brand').documentId('brand'),
+                                ),
+                            S.listItem()
+                                .title('Hero')
+                                .icon(MdViewAgenda)
+                                .child(S.editor().id('hero').schemaType('hero').documentId('hero')),
+                            S.listItem()
+                                .title('Carousel')
+                                .icon(MdChromeReaderMode)
+                                .child(
+                                    S.editor()
+                                        .id('carousel')
+                                        .schemaType('carousel')
+                                        .documentId('carousel'),
                                 ),
                         ]),
                 ),

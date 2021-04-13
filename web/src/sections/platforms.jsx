@@ -9,21 +9,16 @@ const query = graphql`
     query PlatformsQuery {
         platforms: sanityPlatforms {
             title
+            scrollId
             list
             _rawContent
         }
     }
 `;
 
-const StyledContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    border-bottom: 1px solid var(--secondary);
-    background-color: var(--primary);
-
-    @media (min-width: 1280px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+const StyledPlatforms = styled.section`
+    margin-top: -64px;
+    padding-top: var(--space-64);
 
     header {
         border-bottom: 1px solid var(--secondary);
@@ -43,25 +38,37 @@ const StyledContainer = styled.div`
     }
 `;
 
+const StyledGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    background-color: var(--primary);
+
+    @media (min-width: 1280px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+`;
+
 export default function Platforms() {
     const { platforms } = useStaticQuery(query);
-    const { title, list, _rawContent } = platforms;
+    const { title, scrollId, list, _rawContent } = platforms;
 
     return (
-        <StyledContainer>
-            <header>
+        <StyledPlatforms id={scrollId}>
+            <StyledGrid>
+                <header>
+                    <Wrapper>
+                        <SectionTitle title={title} />
+                        <ul>
+                            {list.map((item, index) => (
+                                <li key={index}>{item}</li>
+                            ))}
+                        </ul>
+                    </Wrapper>
+                </header>
                 <Wrapper>
-                    <SectionTitle title={title} />
-                    <ul>
-                        {list.map((item, index) => (
-                            <li key={index}>{item}</li>
-                        ))}
-                    </ul>
+                    <PortableText blocks={_rawContent} serializers={serializers} />
                 </Wrapper>
-            </header>
-            <Wrapper>
-                <PortableText blocks={_rawContent} serializers={serializers} />
-            </Wrapper>
-        </StyledContainer>
+            </StyledGrid>
+        </StyledPlatforms>
     );
 }

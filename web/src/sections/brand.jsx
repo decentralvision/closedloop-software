@@ -10,6 +10,7 @@ const query = graphql`
     query BrandQuery {
         brand: sanityBrand {
             title
+            scrollId
             _rawContent
             channels {
                 title
@@ -64,34 +65,41 @@ const StyledGrid = styled.div`
     }
 `;
 
-const StyledHeader = styled.header`
-    p {
-        max-width: 76ch;
-        margin-top: var(--space-24);
+const StyledBrand = styled.section`
+    margin-top: -64px;
+    padding-top: var(--space-64);
+
+    header {
+        p {
+            max-width: 76ch;
+            margin-top: var(--space-24);
+        }
     }
 `;
 
 export default function Brand() {
     const { brand } = useStaticQuery(query);
-    const { title, _rawContent, channels } = brand;
+    const { title, scrollId, _rawContent, channels } = brand;
 
     return (
-        <Wrapper>
-            <StyledHeader>
-                <SectionTitle title={title} />
-                <PortableText blocks={_rawContent} serializers={serializers} />
-            </StyledHeader>
-            {channels.map((item, index) => (
-                <StyledGrid key={index}>
-                    <div>
-                        <Img fluid={item.image.asset.fluid} alt={title} />
-                    </div>
-                    <article>
-                        <h3>{item.title}</h3>
-                        <PortableText blocks={item._rawContent} serializers={serializers} />
-                    </article>
-                </StyledGrid>
-            ))}
-        </Wrapper>
+        <StyledBrand id={scrollId}>
+            <Wrapper>
+                <header>
+                    <SectionTitle title={title} />
+                    <PortableText blocks={_rawContent} serializers={serializers} />
+                </header>
+                {channels.map((item, index) => (
+                    <StyledGrid key={index}>
+                        <div>
+                            <Img fluid={item.image.asset.fluid} alt={title} />
+                        </div>
+                        <article>
+                            <h3>{item.title}</h3>
+                            <PortableText blocks={item._rawContent} serializers={serializers} />
+                        </article>
+                    </StyledGrid>
+                ))}
+            </Wrapper>
+        </StyledBrand>
     );
 }

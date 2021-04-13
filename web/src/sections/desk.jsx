@@ -9,19 +9,15 @@ const query = graphql`
     query DeskQuery {
         desk: sanityDesk {
             title
+            scrollId
             _rawContent
         }
     }
 `;
 
-const StyledContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    background-color: var(--primary);
-
-    @media (min-width: 1280px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+const StyledDesk = styled.section`
+    margin-top: -64px;
+    padding-top: var(--space-64);
 
     header {
         border-bottom: 1px solid var(--gray-300);
@@ -30,31 +26,35 @@ const StyledContainer = styled.div`
             border-right: 1px solid var(--secondary);
             border-bottom: none;
         }
+    }
+`;
 
-        ul {
-            margin-top: var(--space-48);
+const StyledGrid = styled.div`
+    background-color: var(--primary);
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
 
-            li {
-                text-transform: uppercase;
-            }
-        }
+    @media (min-width: 1280px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 `;
 
 export default function Desk() {
     const { desk } = useStaticQuery(query);
-    const { title, _rawContent } = desk;
+    const { title, scrollId, _rawContent } = desk;
 
     return (
-        <StyledContainer>
-            <header>
+        <StyledDesk id={scrollId}>
+            <StyledGrid>
+                <header>
+                    <Wrapper>
+                        <SectionTitle title={title} />
+                    </Wrapper>
+                </header>
                 <Wrapper>
-                    <SectionTitle title={title} />
+                    <PortableText blocks={_rawContent} serializers={serializers} />
                 </Wrapper>
-            </header>
-            <Wrapper>
-                <PortableText blocks={_rawContent} serializers={serializers} />
-            </Wrapper>
-        </StyledContainer>
+            </StyledGrid>
+        </StyledDesk>
     );
 }

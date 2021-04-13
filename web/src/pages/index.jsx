@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { SEO, Intro } from '../components';
-import { Platforms, Solutions, Video, Carousel, Desk, Welcome, Brand } from '../sections';
+import { Platforms, Solutions, Video, Carousel, Desk, Hero, Brand } from '../sections';
 import { fadeIn } from '../components/animations';
 
 const content = (isFirstMount) => ({
@@ -21,7 +21,7 @@ export default function IndexPage({ location }) {
                 {isFirstMount && <Intro />}
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
                     <motion.div variants={fadeIn}>
-                        <Welcome />
+                        <Hero />
                         <Brand />
                         <Desk />
                         <Video />

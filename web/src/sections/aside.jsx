@@ -5,7 +5,10 @@ import Burger from '../components/burger';
 import Menu from '../components/menu';
 
 const StyledAside = styled.aside`
+    position: sticky;
+    top: 0;
     background-color: var(--primary);
+    border-bottom: 1px solid var(--gray-500);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -35,7 +38,12 @@ const Aside = () => {
             <Logo />
             <nav aria-label="Main navigation">
                 <Menu open={open} setOpen={setOpen} />
-                <Burger open={open} setOpen={setOpen} />
+
+                {document.location.pathname === '/' ? (
+                    <Burger open={open} setOpen={setOpen} />
+                ) : (
+                    <span />
+                )}
             </nav>
         </StyledAside>
     );

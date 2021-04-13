@@ -1,7 +1,7 @@
 export default {
-    type: 'document',
-    title: 'Solutions',
-    name: 'solutions',
+    name: 'navItem',
+    type: 'object',
+    title: 'Navigation Item',
     fields: [
         {
             title: 'Title',
@@ -13,12 +13,6 @@ export default {
             title: 'Scroll ID',
             name: 'scrollId',
             type: 'string',
-            validation: (Rule) => Rule.required(),
-        },
-        {
-            title: 'Content',
-            name: 'content',
-            type: 'portableText',
             validation: (Rule) => Rule.required(),
         },
     ],
