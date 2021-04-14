@@ -20,3 +20,14 @@ export const slideIn = {
         },
     },
 };
+
+export const swipe = {
+    initial: { left: '-200%' },
+    animate: {
+        left: '-50%',
+        transition: {
+            duration: 0.6,
+            ease: 'easeIn',
+        },
+    },
+};

@@ -29,8 +29,6 @@ const query = graphql`
 `;
 
 const StyledWelcome = styled.div`
-    background-color: var(--primary);
-
     header {
         display: flex;
         flex-direction: column;
@@ -64,7 +62,6 @@ const StyledWelcome = styled.div`
 `;
 
 const StyledHero = styled.section`
-    background-color: var(--primary);
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
 
