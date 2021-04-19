@@ -6,7 +6,7 @@ export default {
         {
             title: 'Title',
             name: 'title',
-            type: 'string',
+            type: 'portableText',
             validation: (Rule) => Rule.required(),
         },
         {

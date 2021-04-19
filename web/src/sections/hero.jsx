@@ -10,7 +10,7 @@ import { Wrapper } from '../components';
 const query = graphql`
     query HeroQuery {
         hero: sanityHero {
-            title
+            _rawTitle
             _rawContent
             image {
                 asset {
@@ -82,6 +82,10 @@ const StyledHero = styled.section`
             @media (min-width: 768px) {
                 font-size: var(--space-64);
             }
+
+            span {
+                color: var(--secondary);
+            }
         }
     }
 `;
@@ -134,7 +138,7 @@ export default function Welcome() {
             <StyledHero>
                 <header>
                     <Wrapper>
-                        <h1>{hero.title}</h1>
+                        <PortableText blocks={hero._rawTitle} serializers={serializers} />
                     </Wrapper>
                 </header>
 

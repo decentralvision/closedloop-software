@@ -15,7 +15,7 @@ const content = (isFirstMount) => ({
 const StyledBackground = styled.div`
     background-color: var(--primary);
     position: relative;
-    z-index: -10;
+    z-index: 20;
 
     .background {
         position: absolute;
