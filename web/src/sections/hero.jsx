@@ -83,6 +83,10 @@ const StyledHero = styled.section`
                 font-size: var(--space-64);
             }
 
+            @media (min-width: 1024px) {
+                font-size: var(--space-80);
+            }
+
             span {
                 color: var(--secondary);
             }

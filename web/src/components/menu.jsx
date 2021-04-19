@@ -31,7 +31,6 @@ const StyledMenu = styled.div`
     @media (min-width: 768px) {
         height: 100%;
         margin-left: var(--space-96);
-        margin-top: var(--space-96);
         min-height: 100vh;
     }
 
@@ -87,6 +86,18 @@ const menuVariants = {
     },
 };
 
+export const slideIn = {
+    initial: { width: 0 },
+    whileHover: {
+        width: '100%',
+        transition: {
+            duration: 0.6,
+            delay: 1,
+            ease: 'easeIn',
+        },
+    },
+};
+
 const Menu = ({ open, setOpen }) => {
     const { menu } = useStaticQuery(query);
     const { navItems } = menu;
@@ -106,11 +117,30 @@ const Menu = ({ open, setOpen }) => {
         >
             <ul>
                 {navItems.map((item, index) => (
-                    <li key={index}>
-                        <button type="button" onClick={() => handleClick(item.scrollId)}>
+                    <motion.li
+                        key={index}
+                        whileHover={{
+                            backgroundColor: 'var(--secondary)',
+                            transition: {
+                                ease: 'easeIn',
+                                duration: '0.2',
+                            },
+                        }}
+                    >
+                        <motion.button
+                            type="button"
+                            onClick={() => handleClick(item.scrollId)}
+                            whileHover={{
+                                x: 32,
+                                transition: {
+                                    type: 'spring',
+                                    duration: 0.2,
+                                },
+                            }}
+                        >
                             {item.title}
-                        </button>
-                    </li>
+                        </motion.button>
+                    </motion.li>
                 ))}
             </ul>
         </StyledMenu>
