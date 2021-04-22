@@ -1,7 +1,10 @@
+import { MdExtension } from 'react-icons/md';
+
 export default {
     type: 'document',
     title: 'Platforms',
     name: 'platforms',
+    icon: MdExtension,
     fields: [
         {
             title: 'Title',

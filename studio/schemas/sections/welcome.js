@@ -1,7 +1,10 @@
+import { MdExtension } from 'react-icons/md';
+
 export default {
     type: 'document',
     title: 'Welcome',
     name: 'welcome',
+    icon: MdExtension,
     fields: [
         {
             title: 'Title',
