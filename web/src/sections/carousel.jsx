@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import MapEdgesToNodes from '../lib/map-edges-to-nodes';
-import { ArticleCard, Wrapper, SectionTitle } from '../components';
+import { ArticleCard, Wrapper, SectionTitle, ScrollFade } from '../components';
 
 export const query = graphql`
     query CarouselQuery {
@@ -67,7 +67,7 @@ export default function Carousel() {
     const articles = MapEdgesToNodes(article);
 
     return (
-        <StyledCarousel id={scrollId}>
+        <StyledCarousel id={scrollId} as={ScrollFade}>
             <Wrapper>
                 <SectionTitle title={title} />
 

@@ -5,7 +5,7 @@ import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import serializers from '../serializers';
-import { Wrapper } from '../components';
+import { Wrapper, ScrollFade } from '../components';
 
 const query = graphql`
     query HeroQuery {
@@ -99,10 +99,10 @@ const StyledInformation = styled.div`
     flex-direction: column;
 
     .space {
-        height: var(--space-0);
+        height: 0%;
 
         @media (min-width: 768px) {
-            height: var(--space-176);
+            height: 100%;
         }
     }
 
@@ -142,17 +142,21 @@ export default function Welcome() {
             <StyledHero>
                 <header>
                     <Wrapper>
-                        <PortableText blocks={hero._rawTitle} serializers={serializers} />
+                        <ScrollFade>
+                            <PortableText blocks={hero._rawTitle} serializers={serializers} />
+                        </ScrollFade>
                     </Wrapper>
                 </header>
 
                 <StyledInformation>
                     <div className="space" />
                     <div className="cta">
-                        <PortableText blocks={hero._rawContent} serializers={serializers} />
-                        <button type="button" onClick={() => scrollTo('#welcome')}>
-                            Read More
-                        </button>
+                        <ScrollFade>
+                            <PortableText blocks={hero._rawContent} serializers={serializers} />
+                            <button type="button" onClick={() => scrollTo('#welcome')}>
+                                Read More
+                            </button>
+                        </ScrollFade>
                     </div>
                 </StyledInformation>
             </StyledHero>
@@ -161,13 +165,18 @@ export default function Welcome() {
 
             <StyledWelcome id="welcome">
                 <Wrapper>
-                    <header>
-                        <h2>{welcome.title}</h2>
-                        <PortableText blocks={welcome._rawDescription} serializers={serializers} />
-                    </header>
-                    <section>
-                        <PortableText blocks={welcome._rawContent} serializers={serializers} />
-                    </section>
+                    <ScrollFade>
+                        <header>
+                            <h2>{welcome.title}</h2>
+                            <PortableText
+                                blocks={welcome._rawDescription}
+                                serializers={serializers}
+                            />
+                        </header>
+                        <section>
+                            <PortableText blocks={welcome._rawContent} serializers={serializers} />
+                        </section>{' '}
+                    </ScrollFade>
                 </Wrapper>
             </StyledWelcome>
         </>

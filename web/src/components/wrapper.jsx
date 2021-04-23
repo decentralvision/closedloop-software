@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { fadeAndSlide } from './animations';
 
 const StyledWrapper = styled.div`
     padding: var(--space-48) var(--space-24);
@@ -25,11 +23,7 @@ const StyledWrapper = styled.div`
 `;
 
 export default function Wrapper({ children }) {
-    return (
-        <StyledWrapper>
-            <motion.div variants={fadeAndSlide}>{children}</motion.div>
-        </StyledWrapper>
-    );
+    return <StyledWrapper>{children}</StyledWrapper>;
 }
 
 Wrapper.propTypes = {

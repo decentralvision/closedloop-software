@@ -5,9 +5,8 @@ import PortableText from '@sanity/block-content-to-react';
 import Img from 'gatsby-image';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { SEO, Intro, Wrapper } from '../components';
+import { SEO, Intro, Wrapper, ScrollFade } from '../components';
 import serializers from '../serializers';
-import { fadeIn } from '../components/animations';
 
 export const query = graphql`
     query($slug: String!) {
@@ -158,7 +157,7 @@ export default function ArticleTemplate({ data, pageContext, location }) {
             <motion.section key={location.key} exit={{ opacity: 0 }}>
                 {isFirstMount && <Intro />}
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
-                    <StyledArticle as={motion.div} variants={fadeIn}>
+                    <StyledArticle>
                         <header>
                             <Img fluid={article.image.asset.fluid} alt={article.title} />
                         </header>
@@ -166,19 +165,21 @@ export default function ArticleTemplate({ data, pageContext, location }) {
                         <StyledContainer>
                             <aside />
                             <article>
-                                <Wrapper>
-                                    <h1>{article.title}</h1>
+                                <ScrollFade>
+                                    <Wrapper>
+                                        <h1>{article.title}</h1>
 
-                                    <div className="meta">
-                                        <h3>By {article.author.name}</h3>
-                                        <span>{article.date}</span>
-                                    </div>
+                                        <div className="meta">
+                                            <h3>By {article.author.name}</h3>
+                                            <span>{article.date}</span>
+                                        </div>
 
-                                    <PortableText
-                                        blocks={article._rawContent}
-                                        serializers={serializers}
-                                    />
-                                </Wrapper>
+                                        <PortableText
+                                            blocks={article._rawContent}
+                                            serializers={serializers}
+                                        />
+                                    </Wrapper>
+                                </ScrollFade>
                             </article>
                         </StyledContainer>
 

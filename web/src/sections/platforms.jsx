@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import serializers from '../serializers';
-import { Wrapper, SectionTitle } from '../components';
+import { Wrapper, SectionTitle, ScrollFade } from '../components';
 
 const query = graphql`
     query PlatformsQuery {
@@ -57,16 +57,20 @@ export default function Platforms() {
             <StyledGrid>
                 <header>
                     <Wrapper>
-                        <SectionTitle title={title} />
-                        <ul>
-                            {list.map((item, index) => (
-                                <li key={index}>{item}</li>
-                            ))}
-                        </ul>
+                        <ScrollFade>
+                            <SectionTitle title={title} />
+                            <ul>
+                                {list.map((item, index) => (
+                                    <li key={index}>{item}</li>
+                                ))}
+                            </ul>
+                        </ScrollFade>
                     </Wrapper>
                 </header>
                 <Wrapper>
-                    <PortableText blocks={_rawContent} serializers={serializers} />
+                    <ScrollFade>
+                        <PortableText blocks={_rawContent} serializers={serializers} />
+                    </ScrollFade>
                 </Wrapper>
             </StyledGrid>
         </StyledPlatforms>

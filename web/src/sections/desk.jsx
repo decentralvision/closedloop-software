@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import serializers from '../serializers';
-import { Wrapper, SectionTitle } from '../components';
+import { Wrapper, SectionTitle, ScrollFade } from '../components';
 
 const query = graphql`
     query DeskQuery {
@@ -48,11 +48,15 @@ export default function Desk() {
             <StyledGrid>
                 <header>
                     <Wrapper>
-                        <SectionTitle title={title} />
+                        <ScrollFade>
+                            <SectionTitle title={title} />
+                        </ScrollFade>
                     </Wrapper>
                 </header>
                 <Wrapper>
-                    <PortableText blocks={_rawContent} serializers={serializers} />
+                    <ScrollFade>
+                        <PortableText blocks={_rawContent} serializers={serializers} />
+                    </ScrollFade>
                 </Wrapper>
             </StyledGrid>
         </StyledDesk>

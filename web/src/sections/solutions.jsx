@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import serializers from '../serializers';
-import { Wrapper, SectionTitle } from '../components';
+import { Wrapper, SectionTitle, ScrollFade } from '../components';
 
 const query = graphql`
     query SolutionsQuery {
@@ -34,7 +34,7 @@ export default function Solutions() {
     const { title, scrollId, _rawContent } = solutions;
 
     return (
-        <StyledSolutions id={scrollId}>
+        <StyledSolutions id={scrollId} as={ScrollFade}>
             <StyledGrid>
                 <Wrapper>
                     <SectionTitle title={title} />

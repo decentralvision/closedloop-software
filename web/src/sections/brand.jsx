@@ -4,7 +4,7 @@ import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import serializers from '../serializers';
-import { Wrapper, SectionTitle } from '../components';
+import { Wrapper, SectionTitle, ScrollFade } from '../components';
 
 const query = graphql`
     query BrandQuery {
@@ -85,17 +85,22 @@ export default function Brand() {
         <StyledBrand id={scrollId}>
             <Wrapper>
                 <header>
-                    <SectionTitle title={title} />
-                    <PortableText blocks={_rawContent} serializers={serializers} />
+                    <ScrollFade>
+                        <SectionTitle title={title} />
+                        <PortableText blocks={_rawContent} serializers={serializers} />
+                    </ScrollFade>
                 </header>
                 {channels.map((item, index) => (
                     <StyledGrid key={index}>
-                        <div>
+                        <ScrollFade>
                             <Img fluid={item.image.asset.fluid} alt={title} />
-                        </div>
+                        </ScrollFade>
+
                         <article>
-                            <h3>{item.title}</h3>
-                            <PortableText blocks={item._rawContent} serializers={serializers} />
+                            <ScrollFade>
+                                <h3>{item.title}</h3>
+                                <PortableText blocks={item._rawContent} serializers={serializers} />
+                            </ScrollFade>
                         </article>
                     </StyledGrid>
                 ))}
