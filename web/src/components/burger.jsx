@@ -16,7 +16,7 @@ const StyledBurger = styled.button`
         transition: width 0.4s ease-in-out;
 
         :nth-child(2) {
-            margin: var(--space-4) var(--space-0);
+            margin: var(--space-6) var(--space-0);
         }
 
         :nth-child(1) {

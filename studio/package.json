@@ -5,7 +5,7 @@
     "author": "railek <jean@railek.com>",
     "license": "UNLICENSED",
     "scripts": {
-        "deploy": "sanity graphql deploy --playground && sanity deploy"
+        "deploy": "sanity graphql deploy --playground --generation gen3 && sanity deploy"
     },
     "keywords": [
         "sanity"

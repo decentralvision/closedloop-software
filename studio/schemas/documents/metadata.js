@@ -17,6 +17,16 @@ export default {
                 Rule.required().max(155).warning('Should be under 155 characters'),
         },
         {
+            name: 'socials',
+            type: 'array',
+            title: 'Social Media',
+            of: [{ type: 'social' }],
+            options: {
+                sortable: true,
+            },
+            validation: (Rule) => Rule.required(),
+        },
+        {
             name: 'twitter',
             description: 'Remember to include @ symbol',
             title: 'Twitter Username',

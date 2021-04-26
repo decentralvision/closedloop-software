@@ -4,6 +4,8 @@ import Logo from '../components/logo';
 import Burger from '../components/burger';
 import Menu from '../components/menu';
 
+import { Social } from '../components';
+
 const StyledAside = styled.aside`
     position: sticky;
     top: 0;
@@ -45,6 +47,7 @@ const Aside = () => {
                     <span />
                 )}
             </nav>
+            <Social />
         </StyledAside>
     );
 };
