@@ -22,6 +22,11 @@ const StyledSocial = styled.ul`
 
     .social {
         min-width: var(--space-32);
+        opacity: 0.8;
+
+        :hover {
+            opacity: 1;
+        }
     }
 `;
 

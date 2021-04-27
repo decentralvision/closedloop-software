@@ -29,11 +29,15 @@ const StyledTitle = styled.div`
 `;
 
 export default function SectionTitle({ title, suptitle, light }) {
-    const newTitle = title.split('\n').map((str) => {
+    const newTitle = title.split('\n').map((str, index) => {
         if (light) {
-            return <h2 style={{ color: 'var(--gray-100)' }}>{str}</h2>;
+            return (
+                <h2 key={index} style={{ color: 'var(--gray-100)' }}>
+                    {str}
+                </h2>
+            );
         }
-        return <h2>{str}</h2>;
+        return <h2 key={index}>{str}</h2>;
     });
 
     return (

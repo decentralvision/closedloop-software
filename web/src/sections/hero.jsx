@@ -86,10 +86,6 @@ const StyledHero = styled.section`
             @media (min-width: 1024px) {
                 font-size: var(--space-80);
             }
-
-            span {
-                color: var(--secondary);
-            }
         }
     }
 `;

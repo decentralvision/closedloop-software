@@ -149,7 +149,7 @@ const Menu = ({ open, setOpen }) => {
 
 Menu.propTypes = {
     open: PropTypes.bool.isRequired,
-    setOpen: PropTypes.object.isRequired,
+    setOpen: PropTypes.func.isRequired,
 };
 
 export default Menu;

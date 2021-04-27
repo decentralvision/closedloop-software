@@ -25,7 +25,7 @@ const StyledBackground = styled.div`
         bottom: 0;
         background: #fff;
         transform: skewY(-75deg);
-        height: 60%;
+        height: 75%;
     }
 
     .content {
@@ -48,7 +48,7 @@ export default function IndexPage({ location }) {
                             <Hero />
                         </div>
                     </StyledBackground>
-                    <motion.div variants={fadeIn}>
+                    <motion.div variants={fadeIn} style={{ position: 'relative', zIndex: '20' }}>
                         <Brand />
                         <Desk />
                         <Video />

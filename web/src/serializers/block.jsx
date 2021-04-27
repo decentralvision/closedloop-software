@@ -15,6 +15,6 @@ export default function Block({ node, children }) {
 }
 
 Block.propTypes = {
-    node: PropTypes.node.isRequired,
+    node: PropTypes.any.isRequired,
     children: PropTypes.node.isRequired,
 };
