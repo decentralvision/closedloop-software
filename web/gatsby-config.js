@@ -23,10 +23,13 @@ module.exports = {
                 watchMode: !isProd,
             },
         },
+        'gatsby-plugin-preload-fonts',
         {
-            resolve: 'gatsby-plugin-typography',
+            resolve: 'gatsby-plugin-web-font-loader',
             options: {
-                pathToConfigModule: 'src/lib/typography',
+                google: {
+                    families: ['Roboto', 'Roboto Condensed'],
+                },
             },
         },
         'gatsby-plugin-smoothscroll',

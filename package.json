@@ -28,6 +28,7 @@
         "build": "yarn workspace web build",
         "serve": "yarn workspace web serve",
         "clean": "yarn workspace web clean",
+        "preload-fonts": "yarn workspace web preload-fonts",
         "deploy-sanity": "yarn workspace studio deploy"
     },
     "devDependencies": {

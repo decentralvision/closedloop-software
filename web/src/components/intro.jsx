@@ -41,6 +41,7 @@ const StyledTransition = styled.div`
 
         text {
             font-weight: 900;
+            font-family: 'Roboto Condensed', sans-serif;
             font-size: var(--space-48);
             text-transform: uppercase;
         }
