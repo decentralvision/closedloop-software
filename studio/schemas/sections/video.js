@@ -19,15 +19,9 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
-            title: 'Poster',
-            name: 'poster',
-            type: 'image',
-            validation: (Rule) => Rule.required(),
-        },
-        {
-            name: 'clip',
-            title: 'Clip',
-            type: 'file',
+            title: 'Video ID',
+            name: 'videoId',
+            type: 'string',
             validation: (Rule) => Rule.required(),
         },
     ],

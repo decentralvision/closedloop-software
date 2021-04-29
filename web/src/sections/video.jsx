@@ -1,38 +1,40 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import YouTube from 'react-youtube';
 import styled from 'styled-components';
-
-const StyledVideo = styled.video`
-    width: 100%;
-`;
 
 const query = graphql`
     query VideoQuery {
         video: sanityVideo {
-            title
-            clip {
-                asset {
-                    _id
-                    url
-                }
-            }
-            poster {
-                asset {
-                    _id
-                    url
-                }
-            }
+            videoId
+        }
+    }
+`;
+
+const StyledVideo = styled.section`
+    .youtube {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
     }
 `;
 
 const Video = () => {
     const { video } = useStaticQuery(query);
-    const { title, poster, clip } = video;
+    const { videoId } = video;
 
     return (
-        <StyledVideo title={title} controls preload="none" poster={poster.asset.url}>
-            <source src={clip.asset.url} type="video/mp4" />
+        <StyledVideo>
+            <YouTube videoId={videoId} containerClassName="youtube" />
         </StyledVideo>
     );
 };
