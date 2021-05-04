@@ -38,11 +38,5 @@ export default {
             type: 'image',
             validation: (Rule) => Rule.required(),
         },
-        {
-            title: 'Image',
-            name: 'image',
-            type: 'image',
-            validation: (Rule) => Rule.required(),
-        },
     ],
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const StyledSocial = styled.ul`
     display: none;
@@ -21,7 +21,6 @@ const StyledSocial = styled.ul`
     }
 
     .social {
-        min-width: var(--space-32);
         opacity: 0.8;
 
         :hover {
@@ -38,9 +37,11 @@ const query = graphql`
                 url
                 logo {
                     asset {
-                        fluid(maxWidth: 32) {
-                            ...GatsbySanityImageFluid
-                        }
+                        gatsbyImageData(
+                            width: 32
+                            placeholder: BLURRED
+                            formats: [AUTO, WEBP, AVIF]
+                        )
                     }
                 }
             }
@@ -58,9 +59,9 @@ export default function Social() {
                 {socials.map((item, index) => (
                     <li key={index}>
                         <a href={item.url} target="_blank" rel="noopener noreferrer">
-                            <Img
+                            <GatsbyImage
                                 className="social"
-                                fluid={item.logo.asset.fluid}
+                                image={item.logo.asset.gatsbyImageData}
                                 alt={item.title}
                             />
                         </a>

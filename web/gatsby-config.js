@@ -23,15 +23,6 @@ module.exports = {
                 watchMode: !isProd,
             },
         },
-        'gatsby-plugin-preload-fonts',
-        {
-            resolve: 'gatsby-plugin-web-font-loader',
-            options: {
-                google: {
-                    families: ['Roboto', 'Roboto Condensed'],
-                },
-            },
-        },
         'gatsby-plugin-no-sourcemaps',
         'gatsby-plugin-netlify',
         'gatsby-plugin-netlify-cache',
@@ -41,8 +32,9 @@ module.exports = {
         'gatsby-plugin-netlify',
         'gatsby-plugin-sitemap',
         'gatsby-plugin-react-helmet',
-        'gatsby-transformer-sharp',
+        'gatsby-plugin-image',
         'gatsby-plugin-sharp',
+        'gatsby-transformer-sharp',
         'gatsby-plugin-offline',
         {
             resolve: 'gatsby-source-filesystem',

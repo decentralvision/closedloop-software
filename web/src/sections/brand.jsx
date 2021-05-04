@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import serializers from '../serializers';
 import { Wrapper, SectionTitle, ScrollFade } from '../components';
 
@@ -17,9 +17,11 @@ const query = graphql`
                 _rawContent
                 image {
                     asset {
-                        fluid(maxWidth: 512) {
-                            ...GatsbySanityImageFluid
-                        }
+                        gatsbyImageData(
+                            width: 288
+                            placeholder: BLURRED
+                            formats: [AUTO, WEBP, AVIF]
+                        )
                     }
                 }
             }
@@ -59,10 +61,6 @@ const StyledGrid = styled.div`
             margin-top: var(--space-24);
         }
     }
-
-    & > div {
-        width: 60%;
-    }
 `;
 
 const StyledBrand = styled.section`
@@ -93,7 +91,7 @@ export default function Brand() {
                 {channels.map((item, index) => (
                     <StyledGrid key={index}>
                         <ScrollFade>
-                            <Img fluid={item.image.asset.fluid} alt={title} />
+                            <GatsbyImage image={item.image.asset.gatsbyImageData} alt={title} />
                         </ScrollFade>
 
                         <article>

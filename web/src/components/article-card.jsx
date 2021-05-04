@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -35,11 +35,14 @@ const StyledCard = styled.div`
     }
 `;
 
-export default function ArticleCard({ slug, title, excerpt, image }) {
+export default function ArticleCard({ slug, title, excerpt, banner }) {
+    const image = getImage(banner);
+
     return (
         <Link to={`/${slug.current}/`}>
             <StyledCard>
-                <Img fluid={image.asset.fluid} alt={title} />
+                <GatsbyImage image={image} alt={title} />
+
                 <article>
                     <h3>{title}</h3>
                     <p>{excerpt}</p>
@@ -52,6 +55,6 @@ export default function ArticleCard({ slug, title, excerpt, image }) {
 ArticleCard.propTypes = {
     title: PropTypes.string.isRequired,
     excerpt: PropTypes.string.isRequired,
-    image: PropTypes.object.isRequired,
+    banner: PropTypes.object.isRequired,
     slug: PropTypes.object.isRequired,
 };

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import imageUrlFor from '../lib/image-url';
 
 const query = graphql`
     query SEOQuery {
@@ -10,16 +9,11 @@ const query = graphql`
             title
             description
             twitter
-            image {
-                asset {
-                    _id
-                }
-            }
         }
     }
 `;
 
-export default function SEO({ title, description, type, lang, image }) {
+export default function SEO({ title, description, type, lang }) {
     const { metadata } = useStaticQuery(query);
 
     return (
@@ -39,25 +33,10 @@ export default function SEO({ title, description, type, lang, image }) {
                 key="ogdesc"
             />
             <meta property="og:type" content={type || 'website'} key="ogtype" />
-            <meta
-                property="og:image"
-                content={
-                    imageUrlFor(image).width(1200).url() ||
-                    imageUrlFor(metadata.image).width(1200).url()
-                }
-                key="ogimage"
-            />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description || metadata.description} />
             <meta name="twitter:creator" content={metadata.twitter} />
-            <meta
-                name="twitter:image"
-                content={
-                    imageUrlFor(image).width(300).url() ||
-                    imageUrlFor(metadata.image).width(300).url()
-                }
-            />
         </Helmet>
     );
 }

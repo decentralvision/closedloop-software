@@ -1,16 +1,12 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const StyledLogo = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .logo {
-        width: var(--space-32);
-    }
 `;
 
 const query = graphql`
@@ -19,9 +15,7 @@ const query = graphql`
             title
             logo {
                 asset {
-                    fluid(maxWidth: 32) {
-                        ...GatsbySanityImageFluid
-                    }
+                    gatsbyImageData(width: 32, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
             }
         }
@@ -30,11 +24,12 @@ const query = graphql`
 
 const Logo = () => {
     const { metadata } = useStaticQuery(query);
+    const image = getImage(metadata.logo.asset.gatsbyImageData);
 
     return (
         <Link to="/">
             <StyledLogo>
-                <Img className="logo" fluid={metadata.logo.asset.fluid} alt={metadata.title} />
+                <GatsbyImage image={image} alt={metadata.title} />
             </StyledLogo>
         </Link>
     );

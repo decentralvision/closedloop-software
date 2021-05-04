@@ -17,9 +17,12 @@ export const query = graphql`
                     }
                     image {
                         asset {
-                            fluid(maxWidth: 384, maxHeight: 384) {
-                                ...GatsbySanityImageFluid
-                            }
+                            gatsbyImageData(
+                                width: 1024
+                                height: 1024
+                                placeholder: BLURRED
+                                formats: [AUTO, WEBP, AVIF]
+                            )
                         }
                     }
                 }
@@ -78,7 +81,7 @@ export default function Carousel() {
                             slug={item.slug}
                             title={item.title}
                             excerpt={item.excerpt}
-                            image={item.image}
+                            banner={item.image.asset.gatsbyImageData}
                         />
                     ))}
                 </StyledGrid>

@@ -28,12 +28,12 @@
         "build": "yarn workspace web build",
         "serve": "yarn workspace web serve",
         "clean": "yarn workspace web clean",
-        "preload-fonts": "yarn workspace web preload-fonts",
+        "start-sanity": "yarn workspace studio start",
         "deploy-sanity": "yarn workspace studio deploy"
     },
     "devDependencies": {
-        "@commitlint/cli": "^12.1.0",
-        "@commitlint/config-conventional": "^12.1.0",
+        "@commitlint/cli": "^12.1.1",
+        "@commitlint/config-conventional": "^12.1.1",
         "husky": "^6.0.0"
     }
 }

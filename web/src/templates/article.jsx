@@ -2,14 +2,14 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import PortableText from '@sanity/block-content-to-react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { SEO, Intro, Wrapper, ScrollFade } from '../components';
 import serializers from '../serializers';
 
 export const query = graphql`
-    query($slug: String!) {
+    query ($slug: String!) {
         article: sanityArticle(slug: { current: { eq: $slug } }) {
             id
             title
@@ -23,9 +23,13 @@ export const query = graphql`
             }
             image {
                 asset {
-                    fluid(maxWidth: 1920, maxHeight: 320) {
-                        ...GatsbySanityImageFluid
-                    }
+                    gatsbyImageData(
+                        width: 1920
+                        height: 512
+                        layout: FULL_WIDTH
+                        placeholder: BLURRED
+                        formats: [AUTO, WEBP, AVIF]
+                    )
                 }
             }
         }
@@ -149,18 +153,17 @@ export default function ArticleTemplate({ data, pageContext, location }) {
     const isFirstMount = !location.action;
     const article = data && data.article;
     const { next, prev, prevTitle, nextTitle } = pageContext;
+    const image = getImage(article.image.asset.gatsbyImageData);
 
     return (
         <>
-            <SEO title={article.title} description={article.excerpt} image={article.image.asset} />
+            <SEO title={article.title} description={article.excerpt} />
 
             <motion.section key={location.key} exit={{ opacity: 0 }}>
                 {isFirstMount && <Intro />}
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
                     <StyledArticle>
-                        <header>
-                            <Img fluid={article.image.asset.fluid} alt={article.title} />
-                        </header>
+                        <GatsbyImage image={image} alt={article.title} />
 
                         <StyledContainer>
                             <aside />
@@ -209,7 +212,7 @@ export default function ArticleTemplate({ data, pageContext, location }) {
 }
 
 ArticleTemplate.propTypes = {
-    data: PropTypes.node.isRequired,
-    pageContext: PropTypes.node.isRequired,
+    data: PropTypes.any.isRequired,
+    pageContext: PropTypes.any.isRequired,
     location: PropTypes.object.isRequired,
 };

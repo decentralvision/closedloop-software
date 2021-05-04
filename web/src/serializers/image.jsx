@@ -1,23 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
-import { getFluidGatsbyImage } from 'gatsby-source-sanity';
+import { getGatsbyImageData } from 'gatsby-source-sanity';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
-export default function Image(props) {
-    const { asset, alt } = props;
-
-    const fluidProps = getFluidGatsbyImage(
-        asset.ref,
+export default function Image({ node }) {
+    const gatsbyImageData = getGatsbyImageData(
+        node,
         { maxWidth: 1280 },
         {
             projectId: process.env.GATSBY_SANITY_PROJECT_ID,
             dataset: process.env.GATSBY_SANITY_DATASET,
         },
     );
-    return <Img fluid={fluidProps} alt={alt} />;
+    return <GatsbyImage image={gatsbyImageData} />;
 }
-
-Image.propTypes = {
-    asset: PropTypes.node.isRequired,
-    alt: PropTypes.string.isRequired,
-};

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const StyledSecondary = styled.span`
     color: var(--secondary);
+    word-break: break-all;
 `;
 
 export default function Secondary({ children }) {

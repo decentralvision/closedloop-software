@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import scrollTo from 'gatsby-plugin-smoothscroll';
@@ -14,9 +14,7 @@ const query = graphql`
             _rawContent
             image {
                 asset {
-                    fluid(maxWidth: 1920) {
-                        ...GatsbySanityImageFluid
-                    }
+                    gatsbyImageData(width: 1920, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
             }
         }
@@ -132,6 +130,7 @@ const StyledInformation = styled.div`
 
 export default function Welcome() {
     const { welcome, hero } = useStaticQuery(query);
+    const image = getImage(hero.image.asset.gatsbyImageData);
 
     return (
         <>
@@ -157,7 +156,7 @@ export default function Welcome() {
                 </StyledInformation>
             </StyledHero>
 
-            <Img fluid={hero.image.asset.fluid} alt={hero.title} />
+            <GatsbyImage image={image} alt={welcome.title} />
 
             <StyledWelcome id="welcome">
                 <Wrapper>
