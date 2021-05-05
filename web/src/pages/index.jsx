@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { SEO, Intro } from '../components';
-import { Platforms, Solutions, Video, Carousel, Desk, Hero, Brand } from '../sections';
+import { Platforms, Solutions, Carousel, Desk, Hero, Brand } from '../sections';
 import { fadeIn, swipe } from '../components/animations';
 
 const content = (isFirstMount) => ({
@@ -51,7 +51,6 @@ export default function IndexPage({ location }) {
                     <motion.div variants={fadeIn} style={{ position: 'relative', zIndex: '20' }}>
                         <Brand />
                         <Desk />
-                        <Video />
                         <Solutions />
                         <Platforms />
                         <Carousel />

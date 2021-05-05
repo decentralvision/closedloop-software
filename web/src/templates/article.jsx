@@ -2,11 +2,12 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import PortableText from '@sanity/block-content-to-react';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { Parallax } from 'react-parallax';
 import { SEO, Intro, Wrapper, ScrollFade } from '../components';
 import serializers from '../serializers';
+import { ImageUrl } from '../sanity';
 
 export const query = graphql`
     query ($slug: String!) {
@@ -23,13 +24,7 @@ export const query = graphql`
             }
             image {
                 asset {
-                    gatsbyImageData(
-                        width: 1920
-                        height: 512
-                        layout: FULL_WIDTH
-                        placeholder: BLURRED
-                        formats: [AUTO, WEBP, AVIF]
-                    )
+                    url
                 }
             }
         }
@@ -153,7 +148,6 @@ export default function ArticleTemplate({ data, pageContext, location }) {
     const isFirstMount = !location.action;
     const article = data && data.article;
     const { next, prev, prevTitle, nextTitle } = pageContext;
-    const image = getImage(article.image.asset.gatsbyImageData);
 
     return (
         <>
@@ -163,7 +157,13 @@ export default function ArticleTemplate({ data, pageContext, location }) {
                 {isFirstMount && <Intro />}
                 <motion.div variants={content(isFirstMount)} animate="animate" initial="initial">
                     <StyledArticle>
-                        <GatsbyImage image={image} alt={article.title} />
+                        <Parallax
+                            bgImage={ImageUrl(article.image).url()}
+                            bgImageAlt={article.title}
+                            strength={200}
+                        >
+                            <div style={{ width: '100%', height: '512px' }} />
+                        </Parallax>
 
                         <StyledContainer>
                             <aside />

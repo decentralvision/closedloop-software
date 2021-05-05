@@ -1,11 +1,12 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import scrollTo from 'gatsby-plugin-smoothscroll';
+import { Parallax } from 'react-parallax';
 import serializers from '../serializers';
 import { Wrapper, ScrollFade } from '../components';
+import { ImageUrl } from '../sanity';
 
 const query = graphql`
     query HeroQuery {
@@ -14,7 +15,7 @@ const query = graphql`
             _rawContent
             image {
                 asset {
-                    gatsbyImageData(width: 1920, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                    url
                 }
             }
         }
@@ -55,6 +56,7 @@ const StyledWelcome = styled.div`
         p {
             font-size: var(--space-24);
             font-weight: 600;
+            max-width: 64ch;
         }
     }
 `;
@@ -130,7 +132,6 @@ const StyledInformation = styled.div`
 
 export default function Welcome() {
     const { welcome, hero } = useStaticQuery(query);
-    const image = getImage(hero.image.asset.gatsbyImageData);
 
     return (
         <>
@@ -156,7 +157,13 @@ export default function Welcome() {
                 </StyledInformation>
             </StyledHero>
 
-            <GatsbyImage image={image} alt={welcome.title} />
+            <Parallax
+                bgImage={ImageUrl(hero.image).url()}
+                bgImageAlt={welcome.title}
+                strength={200}
+            >
+                <div style={{ width: '100%', height: '512px' }} />
+            </Parallax>
 
             <StyledWelcome id="welcome">
                 <Wrapper>
@@ -170,7 +177,7 @@ export default function Welcome() {
                         </header>
                         <section>
                             <PortableText blocks={welcome._rawContent} serializers={serializers} />
-                        </section>{' '}
+                        </section>
                     </ScrollFade>
                 </Wrapper>
             </StyledWelcome>
