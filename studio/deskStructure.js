@@ -13,6 +13,7 @@ import {
     MdNearMe,
     MdViewAgenda,
     MdFilter1,
+    MdLaunch,
 } from 'react-icons/md';
 
 const hiddenTypes = [
@@ -27,6 +28,7 @@ const hiddenTypes = [
     'hero',
     'menu',
     'carousel',
+    'footer',
 ];
 
 export default () =>
@@ -122,6 +124,15 @@ export default () =>
                                         .id('carousel')
                                         .schemaType('carousel')
                                         .documentId('carousel'),
+                                ),
+                            S.listItem()
+                                .title('Footer')
+                                .icon(MdLaunch)
+                                .child(
+                                    S.editor()
+                                        .id('footer')
+                                        .schemaType('footer')
+                                        .documentId('footer'),
                                 ),
                         ]),
                 ),

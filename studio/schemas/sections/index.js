@@ -6,3 +6,4 @@ export { default as welcome } from './welcome';
 export { default as brand } from './brand';
 export { default as hero } from './hero';
 export { default as carousel } from './carousel';
+export { default as footer } from './footer';

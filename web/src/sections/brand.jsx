@@ -2,7 +2,6 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import serializers from '../serializers';
 import { Wrapper, SectionTitle, ScrollFade } from '../components';
 
@@ -90,10 +89,6 @@ export default function Brand() {
                 </header>
                 {channels.map((item, index) => (
                     <StyledGrid key={index}>
-                        <ScrollFade>
-                            <GatsbyImage image={item.image.asset.gatsbyImageData} alt={title} />
-                        </ScrollFade>
-
                         <article>
                             <ScrollFade>
                                 <h3>{item.title}</h3>
