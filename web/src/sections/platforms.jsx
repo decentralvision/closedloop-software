@@ -26,6 +26,20 @@ const StyledPlatforms = styled.section`
         @media (min-width: 1280px) {
             border-right: 1px solid var(--secondary);
             border-bottom: none;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            ::before {
+                position: absolute;
+                content: '';
+                height: var(--space-48);
+                top: 0;
+                right: 0;
+                bottom: 0;
+                border-right: 1px solid var(--secondary);
+                animation: draw-line-Y 3s infinite;
+                box-shadow: 2px 2px 2px 2px var(--secondary);
+            }
         }
 
         ul {

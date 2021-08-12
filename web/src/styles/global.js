@@ -38,6 +38,15 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'Roboto Condensed', sans-serif;
         line-height: 1.1;
     }
+
+    @keyframes draw-line-Y {
+        0% {
+            transform: translateY(0vh);
+        }
+        100% {
+            transform: translateY(100vh);
+        }
+    }
 `;
 
 export default GlobalStyles;

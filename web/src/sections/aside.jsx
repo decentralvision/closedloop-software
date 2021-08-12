@@ -29,6 +29,18 @@ const StyledAside = styled.aside`
         min-width: var(--space-96);
         padding: var(--space-32) var(--space-0);
         flex-direction: column;
+
+        ::before {
+            position: absolute;
+            content: '';
+            height: var(--space-48);
+            top: 0;
+            right: 0;
+            bottom: 0;
+            border-right: 1px solid var(--secondary);
+            animation: draw-line-Y 3s infinite;
+            box-shadow: 1px 1px 1px 1px var(--secondary);
+        }
     }
 `;
 
