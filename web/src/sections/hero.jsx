@@ -3,10 +3,9 @@ import { useStaticQuery, graphql } from 'gatsby';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import scrollTo from 'gatsby-plugin-smoothscroll';
-import { Parallax } from 'react-parallax';
+import YouTube from 'react-youtube';
 import serializers from '../serializers';
 import { Wrapper, ScrollFade } from '../components';
-import { ImageUrl } from '../sanity';
 
 const query = graphql`
     query HeroQuery {
@@ -23,6 +22,9 @@ const query = graphql`
             title
             _rawDescription
             _rawContent
+        }
+        video: sanityVideo {
+            videoId
         }
     }
 `;
@@ -130,8 +132,26 @@ const StyledInformation = styled.div`
     }
 `;
 
+const StyledVideo = styled.section`
+    .youtube {
+        position: relative;
+        width: 100%;
+        padding-bottom: 41.6%;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    }
+`;
+
 export default function Welcome() {
-    const { welcome, hero } = useStaticQuery(query);
+    const { welcome, hero, video } = useStaticQuery(query);
+    const { videoId } = video;
 
     return (
         <>
@@ -157,13 +177,9 @@ export default function Welcome() {
                 </StyledInformation>
             </StyledHero>
 
-            <Parallax
-                bgImage={ImageUrl(hero.image).url()}
-                bgImageAlt={welcome.title}
-                strength={200}
-            >
-                <div style={{ width: '100%', height: '512px' }} />
-            </Parallax>
+            <StyledVideo>
+                <YouTube videoId={videoId} containerClassName="youtube" />
+            </StyledVideo>
 
             <StyledWelcome id="welcome">
                 <Wrapper>

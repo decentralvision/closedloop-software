@@ -19,13 +19,17 @@ const StyledBackground = styled.div`
 
     .background {
         position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         left: -50%;
+        left: 0;
         bottom: 0;
+        height: 150%;
         background: #fff;
         transform: skewY(-75deg);
         height: 75%;
+        transform: skewY(-70deg);
     }
 
     .content {
