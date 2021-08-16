@@ -29,7 +29,7 @@ function Layout({ children }) {
         kind: 'widget',
         url: 'https://www.videoask.com/fepjstzt8',
         options: {
-            widgetType: 'VideoThumbnailWindowTall',
+            widgetType: 'VideoThumbnailWindowSquare',
             text: 'BRIEF IT',
             backgroundColor: '#1CB3FC',
             position: 'bottom-right',

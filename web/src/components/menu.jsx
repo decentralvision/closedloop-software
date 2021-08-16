@@ -39,14 +39,6 @@ const StyledMenu = styled.div`
         flex-direction: column;
         min-width: 100%;
         white-space: nowrap;
-
-        li {
-            padding: var(--space-0) var(--space-24);
-
-            @media (min-width: 768px) {
-                padding: var(--space-0) var(--space-128);
-            }
-        }
     }
 
     button {
@@ -54,9 +46,14 @@ const StyledMenu = styled.div`
         font-size: var(--space-24);
         font-weight: 700;
         color: var(--gray-100);
+        text-align: left;
+        width: 100%;
+        height: var(--space-96);
+        padding: var(--space-0) var(--space-24);
 
         @media (min-width: 768px) {
             font-size: var(--space-32);
+            padding: var(--space-0) var(--space-128);
         }
 
         @media (min-width: 1024px) {

@@ -13,6 +13,11 @@ const StyledCard = styled.div`
 
     img {
         filter: grayscale(1);
+
+        :hover {
+            transition: all 0.4s ease-in-out;
+            filter: grayscale(0);
+        }
     }
 
     article {
