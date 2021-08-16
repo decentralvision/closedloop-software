@@ -2,8 +2,13 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import PortableText from '@sanity/block-content-to-react';
 import styled from 'styled-components';
+import Lottie from 'lottie-react';
 import serializers from '../serializers';
 import { Wrapper, SectionTitle, ScrollFade } from '../components';
+import sms from '../images/sms.json';
+import mms from '../images/mms.json';
+import inApp from '../images/in-app.json';
+import social from '../images/social.json';
 
 const query = graphql`
     query BrandQuery {
@@ -14,15 +19,6 @@ const query = graphql`
             channels {
                 title
                 _rawContent
-                image {
-                    asset {
-                        gatsbyImageData(
-                            width: 288
-                            placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
-                        )
-                    }
-                }
             }
         }
     }
@@ -77,6 +73,7 @@ const StyledBrand = styled.section`
 export default function Brand() {
     const { brand } = useStaticQuery(query);
     const { title, scrollId, _rawContent, channels } = brand;
+    const imageArray = [sms, mms, inApp, social];
 
     return (
         <StyledBrand id={scrollId}>
@@ -89,6 +86,12 @@ export default function Brand() {
                 </header>
                 {channels.map((item, index) => (
                     <StyledGrid key={index}>
+                        <ScrollFade>
+                            <Lottie
+                                style={{ maxWidth: '512px' }}
+                                animationData={imageArray[index]}
+                            />
+                        </ScrollFade>
                         <article>
                             <ScrollFade>
                                 <h3>{item.title}</h3>
