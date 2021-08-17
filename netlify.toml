@@ -1,7 +1,11 @@
+[build.environment]
+  NETLIFY_USE_YARN = "true"
+  YARN_VERSION = "1.22.11"
+
 [build]
-base = "web/"
-command = "gatsby build"
-publish = "public"
+  base = "web"
+  command = "yarn build"
+  publish = "public"
 
 [[plugins]]
-package = "netlify-plugin-gatsby-cache"
+  package = "netlify-plugin-gatsby-cache"
