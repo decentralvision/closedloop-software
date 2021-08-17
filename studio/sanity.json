@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "project": {
+    "name": "Individ"
+  },
+  "api": {
+    "projectId": "f87jw0xr",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "dashboard-widget-structure-menu",
+    "dashboard-widget-document-list",
+    "@sanity/vision",
+    "@sanity/dashboard"
+  ],
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "implements": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./dashboardConfig"
+    }
+  ]
+}
